@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>2026 Trade Command Center & Roadmap v2.3.9</title>
+  <title>2026 Trade Command Center & Roadmap v2.4.0</title>
   <!-- Chart.js CDN for Visual Milestone Graphs -->
   <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
   <style>
@@ -309,7 +309,7 @@
       <p style="color: var(--text-muted); font-size: 12px; margin-top: 4px;">Live Auto-Synced Dual-Feed Command Center</p>
     </div>
     <div class="header-badges">
-      <span class="version-badge">v2.3.9</span>
+      <span class="version-badge">v2.4.0</span>
       <span class="build-timestamp" id="dashboard-load-time">Updating timestamp...</span>
       <span class="status-badge" id="live-indicator">SYNCING...</span>
     </div>
@@ -881,28 +881,25 @@
       let str = dateVal.toString().trim();
       if (str === '' || str.includes('%')) return null;
 
-      // 1. Direct Week Tag Match (e.g., "W37", "w37")
       if (str.toUpperCase().startsWith('W')) {
         return str.toUpperCase();
       }
 
       let parsedDate = null;
 
-      // 2. Handle Google Sheets GViz Date Object Strings "Date(YYYY,M,D)"
       if (str.includes('Date(')) {
         const matches = str.match(/\d+/g);
         if (matches && matches.length >= 3) {
           const year = parseInt(matches[0], 10);
-          const month = parseInt(matches[1], 10); // GViz months are 0-indexed
+          const month = parseInt(matches[1], 10);
           const day = parseInt(matches[2], 10);
           parsedDate = new Date(year, month, day);
         }
       } 
-      // 3. Handle Standard Date Strings (MM/DD, MM/DD/YY, MM/DD/YYYY)
       else if (str.includes('/')) {
         const parts = str.split('/');
         if (parts.length >= 2) {
-          const month = parseInt(parts[0], 10) - 1; // JS months are 0-indexed
+          const month = parseInt(parts[0], 10) - 1;
           const day = parseInt(parts[1], 10);
           let year = parts[2] ? parseInt(parts[2], 10) : 2026;
           if (year < 100) year += 2000;
@@ -910,7 +907,6 @@
         }
       }
 
-      // 4. Calculate ISO Week Number from Valid Date
       if (parsedDate && !isNaN(parsedDate.getTime())) {
         parsedDate.setDate(parsedDate.getDate() + 4 - (parsedDate.getDay() || 7));
         const yearStart = new Date(parsedDate.getFullYear(), 0, 1);
@@ -1113,7 +1109,7 @@
           const tdfyFocus = localStorage.getItem('strategy_focus_tdfy') || '1';
           reply = `🎯 **Current Portfolio Focus:**\n• **Topstep Live:** Phase ${tsFocus}\n• **Tradeify:** Phase ${tdfyFocus}\nPreserve capital above all else!`;
         } else if (lower.includes('tradeify')) {
-          reply = "⚡ **Tradeify Strategy:** Take Payout 1 on Cluster 1, rebuild $52,100 buffer on Cluster 2, and copy-trade disciplined base hits!";
+          reply = "⚡ **Tradeify Strategy:** Trade all 5 TDFY accounts together in a single copy-trading cluster with disciplined base hits!";
         } else if (lower.includes('sizing') || lower.includes('risk')) {
           reply = "⚠️ **Risk Allocation:** Select your target risk per account ($100–$500) right inside each account card on the Daily Command Center!";
         }
@@ -1437,6 +1433,7 @@
       }
     }
 
+    /* REVISED UNIFIED TRADEIFY EVALUATION ENGINE */
     function evaluateTradeifyAndGroupRules() {
       document.querySelectorAll('#view-daily .card').forEach(c => {
         c.classList.remove('card-lagging', 'card-paused', 'card-danger');
@@ -1445,51 +1442,41 @@
       let pausedCount = 0;
       let activeTradeTargets = [];
 
-      const b1 = parsedBalanceMap['tdfy-1'] || 0;
-      const b2 = parsedBalanceMap['tdfy-2'] || 0;
-      let tdfyPairState = 'synced';
-      if (b1 > 0 && b2 > 0) {
-        if (b2 < (b1 - VARIANCE_TOLERANCE)) {
-          setCardState('tdfy-1', 'paused', 'PAUSED (WAITING FOR TDFY 2)');
-          setCardState('tdfy-2', 'lagging', 'FOCUS: LAGGING');
-          pausedCount++;
-          activeTradeTargets.push('TDFY 2');
-          tdfyPairState = 'unsynced';
-        } else {
-          setCardDefaultBadge('tdfy-1');
-          setCardDefaultBadge('tdfy-2');
-          activeTradeTargets.push('TDFY 1 & 2');
-        }
-      }
+      // Unified Evaluation across ALL 5 Tradeify Accounts (TDFY 1–5)
+      const tdfyIds = ['tdfy-1', 'tdfy-2', 'tdfy-3', 'tdfy-4', 'tdfy-5'];
+      const tdfyBalances = tdfyIds.map(id => parsedBalanceMap[id] || 0).filter(b => b > 0);
+      
+      let tdfyState = 'synced';
+      if (tdfyBalances.length > 0) {
+        const maxTdfyBal = Math.max(...tdfyBalances);
+        let hasTdfyLagging = false;
 
-      const b3 = parsedBalanceMap['tdfy-3'] || 0;
-      const b4 = parsedBalanceMap['tdfy-4'] || 0;
-      const b5 = parsedBalanceMap['tdfy-5'] || 0;
-      let tdfyTrioState = 'synced';
-      if (b3 > 0 && (b4 > 0 || b5 > 0)) {
-        const targetHigh = Math.max(b4, b5);
-        if (b3 < (targetHigh - VARIANCE_TOLERANCE)) {
-          setCardState('tdfy-3', 'lagging', 'FOCUS: LAGGING');
-          if (b4 > b3) { setCardState('tdfy-4', 'paused', 'PAUSED (WAITING FOR TDFY 3)'); pausedCount++; }
-          if (b5 > b3) { setCardState('tdfy-5', 'paused', 'PAUSED (WAITING FOR TDFY 3)'); pausedCount++; }
-          activeTradeTargets.push('TDFY 3');
-          tdfyTrioState = 'unsynced';
+        tdfyIds.forEach(id => {
+          const bal = parsedBalanceMap[id] || 0;
+          if (bal > 0 && (maxTdfyBal - bal) >= VARIANCE_TOLERANCE) {
+            hasTdfyLagging = true;
+            setCardState(id, 'lagging', 'FOCUS: LAGGING');
+          } else {
+            setCardDefaultBadge(id);
+          }
+        });
+
+        if (hasTdfyLagging) {
+          tdfyState = 'unsynced';
+          activeTradeTargets.push('Tradeify Lagging Accounts');
         } else {
-          setCardDefaultBadge('tdfy-3');
-          setCardDefaultBadge('tdfy-4');
-          setCardDefaultBadge('tdfy-5');
-          activeTradeTargets.push('TDFY 3-5');
+          activeTradeTargets.push('TDFY Cluster (1–5)');
         }
       }
 
       const alertTdfy = document.getElementById('alert-tdfy');
       if (alertTdfy) {
-        if (tdfyPairState === 'unsynced' || tdfyTrioState === 'unsynced') {
+        if (tdfyState === 'unsynced') {
           alertTdfy.className = 'group-alert unsynced';
           alertTdfy.innerText = '⚠️ TDFY Alignment Active: Solo Trade Lagging Accounts Only';
         } else {
           alertTdfy.className = 'group-alert synced';
-          alertTdfy.innerText = '✅ Tradeify Synced: Copy-Trade All TDFY Accounts';
+          alertTdfy.innerText = '✅ Tradeify Synced: Copy-Trade All 5 TDFY Accounts';
         }
       }
 
@@ -1788,10 +1775,8 @@
 
       if (effortVelocityChartInstance) effortVelocityChartInstance.destroy();
 
-      // Bucket-match goals unlocked per week tag
       const weeklyUnlockedGoals = labels.map(label => parsedWeeklyGoalMap[label] || 0);
 
-      // Compute 4-Week Moving Average for Development Hours
       const movingAvgHours = hoursData.map((val, idx, arr) => {
         const start = Math.max(0, idx - 3);
         const subset = arr.slice(start, idx + 1);
@@ -1870,7 +1855,7 @@
         const rows = data.table.rows;
         const seenMilestones = getSeenCompletedMilestones();
         
-        parsedWeeklyGoalMap = {}; // Reset weekly bucket counts
+        parsedWeeklyGoalMap = {};
 
         const categoryItems = { 'topstep-live': [], 'tradovate-live': [], 'topstep-prop': [], 'tdfy': [], 'fe': [], 'fn': [], 'ts-wd': [], 'tr-wd': [] };
 
@@ -1954,7 +1939,6 @@
             if (completed) {
               totalMasterDone++;
               
-              // Increment week bucket for Velocity chart reading Column E (or Col K)
               const weekTag = getWeekTagFromDate(dateVal);
               if (weekTag) {
                 parsedWeeklyGoalMap[weekTag] = (parsedWeeklyGoalMap[weekTag] || 0) + 1;
