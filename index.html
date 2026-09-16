@@ -4,7 +4,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>2026 Trade Command Center & Roadmap v2.4.0</title>
-  <!-- Chart.js CDN via cdnjs (Bypasses Edge Tracking Prevention & Script Blocks) -->
+  <!-- Chart.js via cdnjs (Bypasses Edge Tracking Prevention & Script Blocks) -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.0/chart.umd.min.js"></script>
   <style>
     :root {
@@ -105,13 +105,11 @@
     .exec-btn.state-in-progress.active { background: var(--accent-blue); color: #fff; }
     .exec-btn.state-complete.active { background: var(--accent-green); color: #fff; }
 
-    /* CARD-SPECIFIC RISK AMOUNT STYLING */
     .card-risk-box { background: rgba(19, 23, 34, 0.7); border: 1px solid var(--border-color); border-radius: 6px; padding: 10px 12px; margin-bottom: 12px; display: flex; justify-content: space-between; align-items: center; }
     .card-risk-label { font-size: 11px; font-weight: 800; color: var(--accent-yellow); text-transform: uppercase; letter-spacing: 0.5px; display: flex; align-items: center; gap: 6px; }
     .card-risk-select { background: var(--bg-card); border: 1px solid var(--border-color); color: #fff; font-size: 13px; font-weight: 800; padding: 4px 10px; border-radius: 6px; outline: none; cursor: pointer; }
     .card-risk-select:focus { border-color: var(--accent-yellow); }
 
-    /* Badges */
     .badge { font-size: 10px; padding: 3px 8px; border-radius: 12px; font-weight: 700; text-transform: uppercase; background: var(--bg-header); color: var(--text-muted); }
     .badge-green { background: rgba(8, 153, 129, 0.2); color: var(--accent-green); border: 1px solid var(--accent-green); }
     .badge-yellow { background: rgba(245, 192, 0, 0.25); color: var(--accent-yellow); border: 1px solid var(--accent-yellow); }
@@ -120,14 +118,11 @@
     .badge-purple { background: rgba(171, 71, 188, 0.2); color: var(--accent-purple); border: 1px solid var(--accent-purple); }
     .badge-cyan { background: rgba(0, 188, 212, 0.2); color: var(--accent-cyan); border: 1px solid var(--accent-cyan); }
 
-    /* Goal Hero Box & Recovery Mode */
     .goal-hero-box { background: rgba(41, 98, 255, 0.08); border: 1px solid rgba(41, 98, 255, 0.25); border-radius: 6px; padding: 12px; margin-bottom: 10px; text-align: center; transition: all 0.3s ease; }
     .hero-label { font-size: 10px; color: var(--text-muted); font-weight: 700; letter-spacing: 0.5px; text-transform: uppercase; }
     .hero-val { font-size: 18px; color: #fff; font-weight: 800; margin-top: 2px; letter-spacing: -0.3px; }
     .distance-sub { font-size: 10px; color: var(--accent-blue); font-weight: 600; margin-top: 4px; }
-    .distance-danger { color: var(--accent-red) !important; font-weight: 700; }
 
-    /* Progress Bar */
     .progress-container { margin-top: 10px; }
     .progress-bar-bg { background: var(--border-color); height: 6px; border-radius: 3px; overflow: hidden; margin-top: 4px; }
     .progress-bar-fill { height: 100%; background: var(--accent-blue); width: 0%; transition: width 0.4s ease, background-color 0.4s ease; }
@@ -135,7 +130,6 @@
     .balance-subdued { margin-top: 12px; padding-top: 10px; border-top: 1px dashed var(--border-color); display: flex; justify-content: space-between; font-size: 11px; color: var(--text-muted); }
     .balance-subdued .stat-val { font-size: 12px; font-weight: 600; color: var(--text-main); }
 
-    /* Long-Term Goals Timeline & Strategy Styles */
     .macro-progress-box { background: var(--bg-card); border: 1px solid var(--border-color); border-radius: var(--card-radius); padding: 16px; margin-bottom: 20px; }
     .macro-header { display: flex; justify-content: space-between; font-weight: 700; font-size: 14px; margin-bottom: 10px; }
     
@@ -274,33 +268,9 @@
     .coach-input-bar { padding: 10px 14px; border-top: 1px solid var(--border-color); display: flex; gap: 8px; }
     .coach-input { flex: 1; background: var(--bg-main); border: 1px solid var(--border-color); color: #fff; padding: 8px 12px; border-radius: 6px; font-size: 12px; outline: none; }
     .coach-send-btn { background: var(--accent-purple); color: #fff; border: none; padding: 8px 14px; border-radius: 6px; font-weight: 700; cursor: pointer; }
-
-    .modal-overlay { position: fixed; top: 0; left: 0; width: 100vw; height: 100vh; background: rgba(10, 12, 18, 0.85); display: none; justify-content: center; align-items: center; z-index: 1000; backdrop-filter: blur(6px); }
-    .modal-overlay.active { display: flex; }
-    .modal-card { background: var(--bg-card); border: 2px solid var(--accent-green); border-radius: 12px; padding: 32px; max-width: 440px; width: 90%; text-align: center; box-shadow: 0 0 40px rgba(8, 153, 129, 0.35); transform: scale(0.9); transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275); }
-    .modal-overlay.active .modal-card { transform: scale(1); }
-    .modal-icon { font-size: 54px; margin-bottom: 12px; }
-    .modal-title { font-size: 22px; font-weight: 800; color: #fff; margin-bottom: 6px; }
-    .modal-subtitle { font-size: 15px; font-weight: 700; color: var(--accent-green); margin-bottom: 14px; }
-    .modal-msg { font-size: 13px; color: var(--text-main); line-height: 1.5; margin-bottom: 24px; background: rgba(8, 153, 129, 0.08); padding: 12px; border-radius: 6px; border: 1px dashed rgba(8, 153, 129, 0.3); }
-    .modal-close-btn { background: var(--accent-green); color: #fff; border: none; padding: 12px 28px; border-radius: 20px; font-weight: 700; cursor: pointer; font-size: 13px; box-shadow: 0 4px 12px rgba(8, 153, 129, 0.3); transition: transform 0.2s ease; }
-    .modal-close-btn:hover { transform: scale(1.05); }
-    .test-popup-btn { background: transparent; border: 1px solid var(--border-color); color: var(--text-muted); font-size: 10px; padding: 4px 8px; border-radius: 12px; cursor: pointer; margin-left: 10px; }
-    .test-popup-btn:hover { border-color: var(--accent-purple); color: var(--accent-purple); }
   </style>
 </head>
 <body>
-
-  <!-- CELEBRATION POPUP MODAL -->
-  <div class="modal-overlay" id="celebration-modal">
-    <div class="modal-card">
-      <div class="modal-icon">🎉</div>
-      <div class="modal-title">Milestone Unlocked!</div>
-      <div class="modal-subtitle" id="modal-milestone-title">Goal Target Achieved</div>
-      <div class="modal-msg">Congratulations! Your discipline and rule execution paid off. Another milestone crossed on your 2026 Roadmap!</div>
-      <button class="modal-close-btn" onclick="closeCelebrationModal()">Awesome! Let's Keep Going 🚀</button>
-    </div>
-  </div>
 
   <header>
     <div>
@@ -526,11 +496,6 @@
       </div>
     </div>
 
-    <div class="chart-box-container">
-      <div class="chart-box-title">📊 Category Completion Overview</div>
-      <div style="height: 200px; position: relative;"><canvas id="milestoneChart"></canvas></div>
-    </div>
-
     <div class="filter-bar">
       <div class="filter-group">
         <button class="filter-btn active" onclick="filterRoadmapCategory('all', this)">All Goals</button>
@@ -556,7 +521,7 @@
     <!-- GOAL TRACKER TIMELINES & TROPHY ROOMS -->
     <div class="roadmap-category-block" id="roadmap-topstep-live">
       <div class="section-header-wrap">
-        <div><span class="section-header purple">1. Topstep Live — Account Milestones</span><button class="test-popup-btn" onclick="testCelebrationModal()">Test Popup 🔔</button></div>
+        <div><span class="section-header purple">1. Topstep Live — Account Milestones</span></div>
         <span class="badge badge-blue" id="topstep-completed-badge">0 / 0 Unlocked</span>
       </div>
       <div class="category-chart-wrap"><div class="category-chart-title">📈 Topstep Live — Individual Milestone Progression</div><div style="height: 180px;"><canvas id="chart-topstep-live"></canvas></div></div>
@@ -679,6 +644,126 @@
         </div>
       </div>
 
+      <!-- 3. FundedNext Strategic Flow -->
+      <div class="strategy-card">
+        <div class="strategy-header">
+          <span class="strategy-title">🔷 3. FundedNext (FN) — Strategic Flow</span>
+          <span class="badge badge-blue">PROP CLUSTERS</span>
+        </div>
+        <div class="chevron-container" id="strategy-steps-fn">
+          <div class="chevron-step" id="step-fn-1">
+            <div class="chevron-content"><span class="chevron-num">PHASE 1</span><span class="chevron-text">Build $52,100 account buffer</span></div>
+            <div class="chevron-badge-bar"><span class="step-focus-badge" id="badge-fn-1" style="display:none;">📍 YOU ARE HERE</span><span class="step-complete-badge" id="badge-complete-fn-1" style="display:none;">✓ COMPLETE</span><button class="btn-set-chevron-focus" onclick="setStrategyFocus('fn', 1)">Set Focus</button></div>
+          </div>
+          <div class="chevron-step" id="step-fn-2">
+            <div class="chevron-content"><span class="chevron-num">PHASE 2</span><span class="chevron-text">Take payout one at $53,100 balance</span></div>
+            <div class="chevron-badge-bar"><span class="step-focus-badge" id="badge-fn-2" style="display:none;">📍 YOU ARE HERE</span><span class="step-complete-badge" id="badge-complete-fn-2" style="display:none;">✓ COMPLETE</span><button class="btn-set-chevron-focus" onclick="setStrategyFocus('fn', 2)">Set Focus</button></div>
+          </div>
+          <div class="chevron-step" id="step-fn-3">
+            <div class="chevron-content"><span class="chevron-num">PHASE 3</span><span class="chevron-text">Take Payout 2</span></div>
+            <div class="chevron-badge-bar"><span class="step-focus-badge" id="badge-fn-3" style="display:none;">📍 YOU ARE HERE</span><span class="step-complete-badge" id="badge-complete-fn-3" style="display:none;">✓ COMPLETE</span><button class="btn-set-chevron-focus" onclick="setStrategyFocus('fn', 3)">Set Focus</button></div>
+          </div>
+          <div class="chevron-step" id="step-fn-4">
+            <div class="chevron-content"><span class="chevron-num">PHASE 4</span><span class="chevron-text">Take payouts until reaching Live Accounts</span></div>
+            <div class="chevron-badge-bar"><span class="step-focus-badge" id="badge-fn-4" style="display:none;">📍 YOU ARE HERE</span><span class="step-complete-badge" id="badge-complete-fn-4" style="display:none;">✓ COMPLETE</span><button class="btn-set-chevron-focus" onclick="setStrategyFocus('fn', 4)">Set Focus</button></div>
+          </div>
+          <div class="chevron-step" id="step-fn-5">
+            <div class="chevron-content"><span class="chevron-num">PHASE 5</span><span class="chevron-text">Build safety buffer of $52,100 across live accounts</span></div>
+            <div class="chevron-badge-bar"><span class="step-focus-badge" id="badge-fn-5" style="display:none;">📍 YOU ARE HERE</span><span class="step-complete-badge" id="badge-complete-fn-5" style="display:none;">✓ COMPLETE</span><button class="btn-set-chevron-focus" onclick="setStrategyFocus('fn', 5)">Set Focus</button></div>
+          </div>
+          <div class="chevron-step" id="step-fn-6">
+            <div class="chevron-content"><span class="chevron-num">PHASE 6</span><span class="chevron-text">Use Live Accounts as ATM machines</span></div>
+            <div class="chevron-badge-bar"><span class="step-focus-badge" id="badge-fn-6" style="display:none;">📍 YOU ARE HERE</span><span class="step-complete-badge" id="badge-complete-fn-6" style="display:none;">✓ COMPLETE</span><button class="btn-set-chevron-focus" onclick="setStrategyFocus('fn', 6)">Set Focus</button></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- 4. Futures Elite Strategic Flow -->
+      <div class="strategy-card">
+        <div class="strategy-header">
+          <span class="strategy-title">🏆 4. Futures Elite (FE) — Strategic Flow</span>
+          <span class="badge badge-red">PROP CLUSTERS</span>
+        </div>
+        <div class="chevron-container" id="strategy-steps-fe">
+          <div class="chevron-step" id="step-fe-1">
+            <div class="chevron-content"><span class="chevron-num">PHASE 1</span><span class="chevron-text">Recover drawdown and get to 100k balance</span></div>
+            <div class="chevron-badge-bar"><span class="step-focus-badge" id="badge-fe-1" style="display:none;">📍 YOU ARE HERE</span><span class="step-complete-badge" id="badge-complete-fe-1" style="display:none;">✓ COMPLETE</span><button class="btn-set-chevron-focus" onclick="setStrategyFocus('fe', 1)">Set Focus</button></div>
+          </div>
+          <div class="chevron-step" id="step-fe-2">
+            <div class="chevron-content"><span class="chevron-num">PHASE 2</span><span class="chevron-text">Grow account above safety buffer of $103,100</span></div>
+            <div class="chevron-badge-bar"><span class="step-focus-badge" id="badge-fe-2" style="display:none;">📍 YOU ARE HERE</span><span class="step-complete-badge" id="badge-complete-fe-2" style="display:none;">✓ COMPLETE</span><button class="btn-set-chevron-focus" onclick="setStrategyFocus('fe', 2)">Set Focus</button></div>
+          </div>
+          <div class="chevron-step" id="step-fe-3">
+            <div class="chevron-content"><span class="chevron-num">PHASE 3</span><span class="chevron-text">Take first payout at $107,000</span></div>
+            <div class="chevron-badge-bar"><span class="step-focus-badge" id="badge-fe-3" style="display:none;">📍 YOU ARE HERE</span><span class="step-complete-badge" id="badge-complete-fe-3" style="display:none;">✓ COMPLETE</span><button class="btn-set-chevron-focus" onclick="setStrategyFocus('fe', 3)">Set Focus</button></div>
+          </div>
+          <div class="chevron-step" id="step-fe-4">
+            <div class="chevron-content"><span class="chevron-num">PHASE 4</span><span class="chevron-text">Take payouts until reaching Live Accounts</span></div>
+            <div class="chevron-badge-bar"><span class="step-focus-badge" id="badge-fe-4" style="display:none;">📍 YOU ARE HERE</span><span class="step-complete-badge" id="badge-complete-fe-4" style="display:none;">✓ COMPLETE</span><button class="btn-set-chevron-focus" onclick="setStrategyFocus('fe', 4)">Set Focus</button></div>
+          </div>
+          <div class="chevron-step" id="step-fe-5">
+            <div class="chevron-content"><span class="chevron-num">PHASE 5</span><span class="chevron-text">Trade Live Accounts with base hits</span></div>
+            <div class="chevron-badge-bar"><span class="step-focus-badge" id="badge-fe-5" style="display:none;">📍 YOU ARE HERE</span><span class="step-complete-badge" id="badge-complete-fe-5" style="display:none;">✓ COMPLETE</span><button class="btn-set-chevron-focus" onclick="setStrategyFocus('fe', 5)">Set Focus</button></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- 5. Topstep Evals Strategic Flow -->
+      <div class="strategy-card">
+        <div class="strategy-header">
+          <span class="strategy-title">🎯 5. Topstep Evals — Strategic Flow</span>
+          <span class="badge badge-purple">EVALUATION PATH</span>
+        </div>
+        <div class="chevron-container" id="strategy-steps-tseval">
+          <div class="chevron-step" id="step-tseval-1">
+            <div class="chevron-content"><span class="chevron-num">PHASE 1</span><span class="chevron-text">Pass Eval 1 slowly</span></div>
+            <div class="chevron-badge-bar"><span class="step-focus-badge" id="badge-tseval-1" style="display:none;">📍 YOU ARE HERE</span><span class="step-complete-badge" id="badge-complete-tseval-1" style="display:none;">✓ COMPLETE</span><button class="btn-set-chevron-focus" onclick="setStrategyFocus('tseval', 1)">Set Focus</button></div>
+          </div>
+          <div class="chevron-step" id="step-tseval-2">
+            <div class="chevron-content"><span class="chevron-num">PHASE 2</span><span class="chevron-text">Purchase 4 more evals and slowly pass those</span></div>
+            <div class="chevron-badge-bar"><span class="step-focus-badge" id="badge-tseval-2" style="display:none;">📍 YOU ARE HERE</span><span class="step-complete-badge" id="badge-complete-tseval-2" style="display:none;">✓ COMPLETE</span><button class="btn-set-chevron-focus" onclick="setStrategyFocus('tseval', 2)">Set Focus</button></div>
+          </div>
+          <div class="chevron-step" id="step-tseval-3">
+            <div class="chevron-content"><span class="chevron-num">PHASE 3</span><span class="chevron-text">Copy-trade with base hits once holding 5 accounts & build buffer</span></div>
+            <div class="chevron-badge-bar"><span class="step-focus-badge" id="badge-tseval-3" style="display:none;">📍 YOU ARE HERE</span><span class="step-complete-badge" id="badge-complete-tseval-3" style="display:none;">✓ COMPLETE</span><button class="btn-set-chevron-focus" onclick="setStrategyFocus('tseval', 3)">Set Focus</button></div>
+          </div>
+          <div class="chevron-step" id="step-tseval-4">
+            <div class="chevron-content"><span class="chevron-num">PHASE 4</span><span class="chevron-text">Take Payout 1</span></div>
+            <div class="chevron-badge-bar"><span class="step-focus-badge" id="badge-tseval-4" style="display:none;">📍 YOU ARE HERE</span><span class="step-complete-badge" id="badge-complete-tseval-4" style="display:none;">✓ COMPLETE</span><button class="btn-set-chevron-focus" onclick="setStrategyFocus('tseval', 4)">Set Focus</button></div>
+          </div>
+          <div class="chevron-step" id="step-tseval-5">
+            <div class="chevron-content"><span class="chevron-num">PHASE 5</span><span class="chevron-text">Take payouts until reaching Live Accounts</span></div>
+            <div class="chevron-badge-bar"><span class="step-focus-badge" id="badge-tseval-5" style="display:none;">📍 YOU ARE HERE</span><span class="step-complete-badge" id="badge-complete-tseval-5" style="display:none;">✓ COMPLETE</span><button class="btn-set-chevron-focus" onclick="setStrategyFocus('tseval', 5)">Set Focus</button></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- 6. Tradovate Live Strategic Flow -->
+      <div class="strategy-card">
+        <div class="strategy-header">
+          <span class="strategy-title">🛡️ 6. Tradovate Live — Strategic Flow</span>
+          <span class="badge badge-cyan">SECONDARY LIVE</span>
+        </div>
+        <div class="chevron-container" id="strategy-steps-tr">
+          <div class="chevron-step" id="step-tr-1">
+            <div class="chevron-content"><span class="chevron-num">PHASE 1</span><span class="chevron-text">Grow account balance to $2,500</span></div>
+            <div class="chevron-badge-bar"><span class="step-focus-badge" id="badge-tr-1" style="display:none;">📍 YOU ARE HERE</span><span class="step-complete-badge" id="badge-complete-tr-1" style="display:none;">✓ COMPLETE</span><button class="btn-set-chevron-focus" onclick="setStrategyFocus('tr', 1)">Set Focus</button></div>
+          </div>
+          <div class="chevron-step" id="step-tr-2">
+            <div class="chevron-content"><span class="chevron-num">PHASE 2</span><span class="chevron-text">Grow account balance to $5,000</span></div>
+            <div class="chevron-badge-bar"><span class="step-focus-badge" id="badge-tr-2" style="display:none;">📍 YOU ARE HERE</span><span class="step-complete-badge" id="badge-complete-tr-2" style="display:none;">✓ COMPLETE</span><button class="btn-set-chevron-focus" onclick="setStrategyFocus('tr', 2)">Set Focus</button></div>
+          </div>
+          <div class="chevron-step" id="step-tr-3">
+            <div class="chevron-content"><span class="chevron-num">PHASE 3</span><span class="chevron-text">Grow account balance to $10,000</span></div>
+            <div class="chevron-badge-bar"><span class="step-focus-badge" id="badge-tr-3" style="display:none;">📍 YOU ARE HERE</span><span class="step-complete-badge" id="badge-complete-tr-3" style="display:none;">✓ COMPLETE</span><button class="btn-set-chevron-focus" onclick="setStrategyFocus('tr', 3)">Set Focus</button></div>
+          </div>
+          <div class="chevron-step" id="step-tr-4">
+            <div class="chevron-content"><span class="chevron-num">PHASE 4</span><span class="chevron-text">Take regular withdrawals while growing to $25,000</span></div>
+            <div class="chevron-badge-bar"><span class="step-focus-badge" id="badge-tr-4" style="display:none;">📍 YOU ARE HERE</span><span class="step-complete-badge" id="badge-complete-tr-4" style="display:none;">✓ COMPLETE</span><button class="btn-set-chevron-focus" onclick="setStrategyFocus('tr', 4)">Set Focus</button></div>
+          </div>
+        </div>
+      </div>
+
     </div>
   </div>
 
@@ -709,12 +794,8 @@
     const GOALS_GID     = '1603097852';
     const TIME_LOGS_GID = '1062306775';
 
-    const VARIANCE_TOLERANCE = 50; 
-    const DANGER_ZONE_THRESHOLD = 250; 
-
     let countdownVal = 30;
     let countdownInterval = null;
-    let chartInstance = null;
     let timeSpentChartInstance = null;
     let effortVelocityChartInstance = null;
     const categoryChartInstances = {};
@@ -723,18 +804,9 @@
     const parsedProgressMap = {};
     const parsedBalanceMap = {};
     const parsedGoalMap = {};
-    const parsedDangerMap = {}; 
     let parsedWeeklyGoalMap = {}; 
     let lastParsedWeekLabels = [];
     let lastParsedWeeklyHours = [];
-
-    const encouragementQuotes = [
-      "Every single rule-following trade compounds into long-term wealth. You are building real discipline!",
-      "Consistency over impulse. Focus on the execution, and the targets will take care of themselves.",
-      "Protect your downside first. Capital preservation is what separates professionals from gamblers.",
-      "You have a structured plan for every single account. Stick to the system!",
-      "Withdrawals are the ultimate report card. Stay focused on taking profits out systematically."
-    ];
 
     function updateLiveHeaderTime() {
       const now = new Date();
@@ -858,7 +930,9 @@
         { type: 'ts', maxSteps: 5 },
         { type: 'tdfy', maxSteps: 6 },
         { type: 'fn', maxSteps: 6 },
-        { type: 'fe', maxSteps: 5 }
+        { type: 'fe', maxSteps: 5 },
+        { type: 'tseval', maxSteps: 5 },
+        { type: 'tr', maxSteps: 4 }
       ];
 
       configs.forEach(cfg => {
@@ -1129,7 +1203,7 @@
       });
     }
 
-    /* TIME LOGS CHARTS */
+    /* RESTORED TIME LOGS DUAL-AXIS & TRENDLINE CHARTS */
     window.handleTimeLogsData = function(data) {
       try {
         if (!data || !data.table || !data.table.rows) return;
@@ -1139,8 +1213,9 @@
 
         rows.forEach(r => {
           if (!r.c) return;
-          const weekTag = r.c[4] && r.c[4].v ? r.c[4].v.toString().trim() : '';
-          const hrsVal  = r.c[5] && r.c[5].v ? parseFloat(r.c[5].v) : 0;
+          // GViz Index Mapping: Col E (4) Week Tag, Col F (5) Hours
+          const weekTag = r.c[4] && r.c[4].v !== null ? r.c[4].v.toString().trim() : '';
+          const hrsVal  = r.c[5] && r.c[5].v !== null ? parseFloat(r.c[5].v) : 0;
 
           if (weekTag && !weekLabels.includes(weekTag)) {
             weekLabels.push(weekTag);
@@ -1148,8 +1223,12 @@
           }
         });
 
+        lastParsedWeekLabels = weekLabels;
+        lastParsedWeeklyHours = weeklyHours;
+
         if (weeklyHours.length > 0) {
-          document.getElementById('summary-weekly-time').innerText = `${weeklyHours[weeklyHours.length - 1]} hrs`;
+          const summaryEl = document.getElementById('summary-weekly-time');
+          if (summaryEl) summaryEl.innerText = `${weeklyHours[weeklyHours.length - 1]} hrs`;
         }
 
         renderTimeSpentChart(weekLabels, weeklyHours);
@@ -1162,19 +1241,46 @@
       if (!ctx) return;
       if (timeSpentChartInstance) timeSpentChartInstance.destroy();
 
+      const movingAvgData = hoursData.map((val, idx, arr) => {
+        const start = Math.max(0, idx - 3);
+        const subset = arr.slice(start, idx + 1);
+        const sum = subset.reduce((a, b) => a + b, 0);
+        return parseFloat((sum / subset.length).toFixed(2));
+      });
+
       timeSpentChartInstance = new Chart(ctx, {
         type: 'bar',
         data: {
           labels: labels,
-          datasets: [{ label: 'Hours Logged', data: hoursData, backgroundColor: '#2962ff', borderRadius: 4 }]
+          datasets: [
+            {
+              label: '4-Week Moving Average Trend',
+              data: movingAvgData,
+              type: 'line',
+              borderColor: '#00bcd4',
+              borderWidth: 2,
+              borderDash: [5, 5],
+              fill: false,
+              order: 1
+            },
+            {
+              label: 'Development Hours Worked',
+              data: hoursData,
+              backgroundColor: 'rgba(41, 98, 255, 0.6)',
+              borderColor: '#2962ff',
+              borderWidth: 1.5,
+              borderRadius: 4,
+              order: 2
+            }
+          ]
         },
         options: {
           responsive: true,
           maintainAspectRatio: false,
-          plugins: { legend: { labels: { color: '#d1d4dc' } } },
+          plugins: { legend: { labels: { color: '#d1d4dc', font: { size: 10 } } } },
           scales: {
             x: { grid: { color: 'rgba(54, 58, 69, 0.4)' }, ticks: { color: '#787b86' } },
-            y: { grid: { color: 'rgba(54, 58, 69, 0.4)' }, ticks: { color: '#d1d4dc' } }
+            y: { grid: { color: 'rgba(54, 58, 69, 0.4)' }, ticks: { color: '#d1d4dc' }, beginAtZero: true }
           }
         }
       });
@@ -1185,19 +1291,43 @@
       if (!ctx) return;
       if (effortVelocityChartInstance) effortVelocityChartInstance.destroy();
 
+      const weeklyUnlockedGoals = labels.map(label => parsedWeeklyGoalMap[label] || 0);
+
       effortVelocityChartInstance = new Chart(ctx, {
-        type: 'line',
+        type: 'bar',
         data: {
           labels: labels,
-          datasets: [{ label: 'Effort Trend', data: hoursData, borderColor: '#ab47bc', tension: 0.3, fill: false }]
+          datasets: [
+            { 
+              label: 'Milestones Unlocked', 
+              data: weeklyUnlockedGoals, 
+              type: 'line', 
+              borderColor: '#089981', 
+              backgroundColor: '#089981', 
+              pointRadius: 4, 
+              yAxisID: 'yGoals', 
+              order: 1 
+            },
+            { 
+              label: 'Development Hours', 
+              data: hoursData, 
+              backgroundColor: 'rgba(171, 71, 188, 0.35)', 
+              borderColor: '#ab47bc', 
+              borderWidth: 1, 
+              borderRadius: 4, 
+              yAxisID: 'yHours', 
+              order: 2 
+            }
+          ]
         },
         options: {
           responsive: true,
           maintainAspectRatio: false,
-          plugins: { legend: { labels: { color: '#d1d4dc' } } },
+          plugins: { legend: { labels: { color: '#d1d4dc', font: { size: 10 } } } },
           scales: {
             x: { grid: { color: 'rgba(54, 58, 69, 0.4)' }, ticks: { color: '#787b86' } },
-            y: { grid: { color: 'rgba(54, 58, 69, 0.4)' }, ticks: { color: '#d1d4dc' } }
+            yHours: { type: 'linear', position: 'left', grid: { color: 'rgba(54, 58, 69, 0.4)' }, ticks: { color: '#d1d4dc' }, beginAtZero: true },
+            yGoals: { type: 'linear', position: 'right', grid: { drawOnChartArea: false }, ticks: { color: '#089981', stepSize: 1 }, beginAtZero: true }
           }
         }
       });
