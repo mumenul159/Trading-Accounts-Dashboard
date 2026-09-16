@@ -179,7 +179,6 @@
       border-bottom-right-radius: 6px;
     }
 
-    /* Focus Chevron Styling */
     .chevron-step.is-current-focus {
       background: linear-gradient(135deg, rgba(245, 192, 0, 0.9) 0%, rgba(255, 215, 0, 0.85) 100%);
       box-shadow: 0 4px 16px rgba(245, 192, 0, 0.45);
@@ -1204,42 +1203,113 @@
       });
     }
 
+    /* GOALS 5-COLUMN VERTICAL SCHEMA PARSER */
     window.handleGoalsData = function(data) {
       try {
         if (!data || !data.table || !data.table.rows) return;
         const rows = data.table.rows;
+        
         const categoryItems = {
-          'topstep-live': [], 'tradovate-live': [], 'topstep-prop': [],
-          'tdfy': [], 'fe': [], 'fn': [], 'ts-wd': [], 'tr-wd': []
+          'topstep-live': [],
+          'tradovate-live': [],
+          'topstep-prop': [],
+          'tdfy': [],
+          'fe': [],
+          'fn': [],
+          'ts-wd': [],
+          'tr-wd': []
         };
 
-        rows.forEach(r => {
+        let totalMasterGoals = 0;
+        let totalMasterDone = 0;
+
+        rows.forEach((r) => {
           if (!r.c) return;
-          const title = r.c[1] && r.c[1].v ? r.c[1].v.toString() : '';
-          const pct = r.c[3] && r.c[3].v ? parseFloat(r.c[3].v) : 0;
+
+          // 5-Column Schema: Col A (0) Acct, Col B (1) Description, Col C (2) Complete?, Col D (3) Progress %, Col E (4) Date
+          const acctName  = r.c[0] && r.c[0].v !== null ? r.c[0].v.toString().trim() : '';
+          const goalTitle = r.c[1] && r.c[1].v !== null ? r.c[1].v.toString().trim() : '';
+          const isDone    = r.c[2] && r.c[2].v !== null ? r.c[2].v.toString().toLowerCase().trim() : '';
+          const pctVal    = r.c[3] && r.c[3].v !== null ? r.c[3].v.toString().trim() : '0';
+          const dateVal   = r.c[4] && r.c[4].v !== null ? r.c[4].v.toString().trim() : '';
+
+          if (!acctName && !goalTitle) return;
+
+          const combinedText = (acctName + ' ' + goalTitle).toLowerCase();
+          const completed = (isDone === 'true' || isDone === 'yes' || isDone === '1' || isDone === 'x');
+          let pctProgress = completed ? 100 : parseNumericPercent(pctVal);
+
+          totalMasterGoals++;
+          if (completed) totalMasterDone++;
+
+          let categoryKey = 'topstep-prop';
+
+          if (combinedText.includes('withdraw') || combinedText.includes('payout')) {
+            categoryKey = combinedText.includes('tradovate') ? 'tr-wd' : 'ts-wd';
+          } else if (combinedText.includes('topstep live') || (combinedText.includes('topstep') && combinedText.includes('live'))) {
+            categoryKey = 'topstep-live';
+          } else if (combinedText.includes('tradovate live') || (combinedText.includes('tradovate') && combinedText.includes('live'))) {
+            categoryKey = 'tradovate-live';
+          } else if (combinedText.includes('tdfy') || combinedText.includes('tradeify')) {
+            categoryKey = 'tdfy';
+          } else if (combinedText.includes('fe') || combinedText.includes('futures elite') || combinedText.includes('futureselite')) {
+            categoryKey = 'fe';
+          } else if (combinedText.includes('fn') || combinedText.includes('fundednext')) {
+            categoryKey = 'fn';
+          } else if (combinedText.includes('50k') || combinedText.includes('eval') || combinedText.includes('topstep prop')) {
+            categoryKey = 'topstep-prop';
+          }
+
+          categoryItems[categoryKey].push({
+            acct: acctName,
+            title: goalTitle || acctName,
+            pct: pctProgress,
+            completed: completed,
+            date: dateVal
+          });
+        });
+
+        Object.keys(categoryItems).forEach(catKey => {
+          const items = categoryItems[catKey];
+          renderCategoryEmbedChart(`chart-${catKey}`, items);
+
+          const timelineEl = document.getElementById(`${catKey.replace('-wd', '')}-goals-timeline`) || 
+                             document.getElementById(`${catKey}-goals-timeline`);
           
-          if (title) {
-            const clean = title.toLowerCase();
-            if (clean.includes('topstep') && clean.includes('live')) categoryItems['topstep-live'].push({ title, pct });
-            else if (clean.includes('tradovate') && clean.includes('live')) categoryItems['tradovate-live'].push({ title, pct });
-            else if (clean.includes('tradeify') || clean.includes('tdfy')) categoryItems['tdfy'].push({ title, pct });
-            else if (clean.includes('fe') || clean.includes('elite')) categoryItems['fe'].push({ title, pct });
-            else if (clean.includes('fn') || clean.includes('fundednext')) categoryItems['fn'].push({ title, pct });
-            else if (clean.includes('withdraw') && clean.includes('topstep')) categoryItems['ts-wd'].push({ title, pct });
-            else if (clean.includes('withdraw') && clean.includes('tradovate')) categoryItems['tr-wd'].push({ title, pct });
-            else categoryItems['topstep-prop'].push({ title, pct });
+          if (timelineEl) {
+            let timelineHTML = '';
+            items.forEach(item => {
+              if (!item.completed) {
+                timelineHTML += `
+                  <div class="timeline-node active">
+                    <div class="milestone-card">
+                      <div class="milestone-info">
+                        <div class="milestone-title">
+                          <span class="goal-tag tag-acct">${item.acct || 'Goal'}</span> 
+                          ${item.title}
+                        </div>
+                        <div class="milestone-meta">🎯 Progress: ${item.pct.toFixed(1)}%</div>
+                      </div>
+                      <span class="badge badge-blue">IN PROGRESS</span>
+                    </div>
+                  </div>`;
+              }
+            });
+            timelineEl.innerHTML = timelineHTML || '<div style="color: var(--text-muted); font-size: 12px;">All goals completed or no active milestones listed.</div>';
           }
         });
 
-        renderCategoryEmbedChart('chart-topstep-live', categoryItems['topstep-live']);
-        renderCategoryEmbedChart('chart-tradovate-live', categoryItems['tradovate-live']);
-        renderCategoryEmbedChart('chart-topstep-prop', categoryItems['topstep-prop']);
-        renderCategoryEmbedChart('chart-tdfy', categoryItems['tdfy']);
-        renderCategoryEmbedChart('chart-fe', categoryItems['fe']);
-        renderCategoryEmbedChart('chart-fn', categoryItems['fn']);
-        renderCategoryEmbedChart('chart-ts-wd', categoryItems['ts-wd']);
-        renderCategoryEmbedChart('chart-tr-wd', categoryItems['tr-wd']);
-      } catch (e) { console.error("Goals parse error:", e); }
+        if (totalMasterGoals > 0) {
+          const macroPct = (totalMasterDone / totalMasterGoals) * 100;
+          const macroValEl = document.getElementById('macro-pct-val');
+          const macroBarEl = document.getElementById('macro-pct-bar');
+          if (macroValEl) macroValEl.innerText = macroPct.toFixed(1) + '%';
+          if (macroBarEl) macroBarEl.style.width = macroPct + '%';
+        }
+
+      } catch (e) {
+        console.error("Goals parse error:", e);
+      }
     };
 
     window.handleSheetData = function(data) {
