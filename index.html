@@ -179,7 +179,6 @@
       border-bottom-right-radius: 6px;
     }
 
-    /* Yellow Focus Chevron Styling */
     .chevron-step.is-current-focus {
       background: linear-gradient(135deg, rgba(245, 192, 0, 0.9) 0%, rgba(255, 215, 0, 0.85) 100%);
       box-shadow: 0 4px 16px rgba(245, 192, 0, 0.45);
@@ -516,13 +515,11 @@
 
     <!-- STACKED VERTICAL TIME TRACKING CHARTS -->
     <div class="charts-vertical-stack">
-      <!-- TOP CHART: TIME SPENT BAR CHART + MOVING AVERAGE -->
       <div class="chart-box-container">
         <div class="chart-box-title">⏱️ Weekly Time Spent on Trading System</div>
         <div style="height: 220px; position: relative;"><canvas id="timeSpentChart"></canvas></div>
       </div>
 
-      <!-- BOTTOM CHART: EFFORT VS GOAL VELOCITY (DUAL AXIS + EFFORT TRENDLINE) -->
       <div class="chart-box-container">
         <div class="chart-box-title">📈 Effort vs. Goal Velocity (Development ROI)</div>
         <div style="height: 220px; position: relative;"><canvas id="effortVsVelocityChart"></canvas></div>
@@ -562,49 +559,49 @@
         <div><span class="section-header purple">1. Topstep Live — Account Milestones</span><button class="test-popup-btn" onclick="testCelebrationModal()">Test Popup 🔔</button></div>
         <span class="badge badge-blue" id="topstep-completed-badge">0 / 0 Unlocked</span>
       </div>
-      <div class="category-chart-wrap"><div class="category-chart-title">📈 Topstep Live — % Progress Toward Milestones</div><div style="height: 150px;"><canvas id="chart-topstep-live"></canvas></div></div>
+      <div class="category-chart-wrap"><div class="category-chart-title">📈 Topstep Live — Individual Milestone Progression</div><div style="height: 180px;"><canvas id="chart-topstep-live"></canvas></div></div>
       <div class="timeline-container" id="topstep-goals-timeline"></div><div class="trophy-cabinet" id="topstep-trophy-room"></div>
     </div>
 
     <div class="roadmap-category-block" id="roadmap-tradovate-live">
       <div class="section-header-wrap"><span class="section-header cyan">2. Tradovate Live — Account Milestones</span><span class="badge badge-cyan" id="tradovate-completed-badge">0 / 0 Unlocked</span></div>
-      <div class="category-chart-wrap"><div class="category-chart-title">📈 Tradovate Live — % Progress Toward Milestones</div><div style="height: 150px;"><canvas id="chart-tradovate-live"></canvas></div></div>
+      <div class="category-chart-wrap"><div class="category-chart-title">📈 Tradovate Live — Individual Milestone Progression</div><div style="height: 180px;"><canvas id="chart-tradovate-live"></canvas></div></div>
       <div class="timeline-container" id="tradovate-goals-timeline"></div><div class="trophy-cabinet" id="tradovate-trophy-room"></div>
     </div>
 
     <div class="roadmap-category-block" id="roadmap-topstep-prop">
       <div class="section-header-wrap"><span class="section-header purple">3. Topstep Prop Accounts — Milestones</span><span class="badge badge-purple" id="topstep-prop-completed-badge">0 / 0 Unlocked</span></div>
-      <div class="category-chart-wrap"><div class="category-chart-title">📈 Topstep Prop — % Progress Toward Milestones</div><div style="height: 150px;"><canvas id="chart-topstep-prop"></canvas></div></div>
+      <div class="category-chart-wrap"><div class="category-chart-title">📈 Topstep Prop — Individual Milestone Progression</div><div style="height: 180px;"><canvas id="chart-topstep-prop"></canvas></div></div>
       <div class="timeline-container" id="topstep-prop-goals-timeline"></div><div class="trophy-cabinet" id="topstep-prop-trophy-room"></div>
     </div>
 
     <div class="roadmap-category-block" id="roadmap-tdfy">
       <div class="section-header-wrap"><span class="section-header yellow">4. Tradeify Accounts (TDFY) — Milestones</span><span class="badge badge-yellow" id="tdfy-completed-badge">0 / 0 Unlocked</span></div>
-      <div class="category-chart-wrap"><div class="category-chart-title">📈 Tradeify — % Progress Toward Milestones</div><div style="height: 150px;"><canvas id="chart-tdfy"></canvas></div></div>
+      <div class="category-chart-wrap"><div class="category-chart-title">📈 Tradeify — Individual Milestone Progression</div><div style="height: 180px;"><canvas id="chart-tdfy"></canvas></div></div>
       <div class="timeline-container" id="tdfy-goals-timeline"></div><div class="trophy-cabinet" id="tdfy-trophy-room"></div>
     </div>
 
     <div class="roadmap-category-block" id="roadmap-fe">
       <div class="section-header-wrap"><span class="section-header red">5. Futures Elite Accounts (FE) — Milestones</span><span class="badge badge-red" id="fe-completed-badge">0 / 0 Unlocked</span></div>
-      <div class="category-chart-wrap"><div class="category-chart-title">📈 Futures Elite — % Progress Toward Milestones</div><div style="height: 150px;"><canvas id="chart-fe"></canvas></div></div>
+      <div class="category-chart-wrap"><div class="category-chart-title">📈 Futures Elite — Individual Milestone Progression</div><div style="height: 180px;"><canvas id="chart-fe"></canvas></div></div>
       <div class="timeline-container" id="fe-goals-timeline"></div><div class="trophy-cabinet" id="fe-trophy-room"></div>
     </div>
 
     <div class="roadmap-category-block" id="roadmap-fn">
       <div class="section-header-wrap"><span class="section-header blue">6. FundedNext Accounts (FN) — Milestones</span><span class="badge badge-blue" id="fn-completed-badge">0 / 0 Unlocked</span></div>
-      <div class="category-chart-wrap"><div class="category-chart-title">📈 FundedNext — % Progress Toward Milestones</div><div style="height: 150px;"><canvas id="chart-fn"></canvas></div></div>
+      <div class="category-chart-wrap"><div class="category-chart-title">📈 FundedNext — Individual Milestone Progression</div><div style="height: 180px;"><canvas id="chart-fn"></canvas></div></div>
       <div class="timeline-container" id="fn-goals-timeline"></div><div class="trophy-cabinet" id="fn-trophy-room"></div>
     </div>
 
     <div class="roadmap-category-block" id="roadmap-ts-wd">
       <div class="section-header-wrap"><span class="section-header green">7. Topstep Withdrawals & Payouts</span><span class="badge badge-green" id="ts-wd-completed-badge">0 / 0 Unlocked</span></div>
-      <div class="category-chart-wrap"><div class="category-chart-title">📈 Topstep Withdrawals — % Progress Toward Targets</div><div style="height: 150px;"><canvas id="chart-ts-wd"></canvas></div></div>
+      <div class="category-chart-wrap"><div class="category-chart-title">📈 Topstep Withdrawals — Individual Milestone Progression</div><div style="height: 180px;"><canvas id="chart-ts-wd"></canvas></div></div>
       <div class="timeline-container" id="ts-wd-goals-timeline"></div><div class="trophy-cabinet" id="ts-wd-trophy-room"></div>
     </div>
 
     <div class="roadmap-category-block" id="roadmap-tr-wd">
       <div class="section-header-wrap"><span class="section-header green">8. Tradovate Withdrawals & Payouts</span><span class="badge badge-green" id="tr-wd-completed-badge">0 / 0 Unlocked</span></div>
-      <div class="category-chart-wrap"><div class="category-chart-title">📈 Tradovate Withdrawals — % Progress Toward Targets</div><div style="height: 150px;"><canvas id="chart-tr-wd"></canvas></div></div>
+      <div class="category-chart-wrap"><div class="category-chart-title">📈 Tradovate Withdrawals — Individual Milestone Progression</div><div style="height: 180px;"><canvas id="chart-tr-wd"></canvas></div></div>
       <div class="timeline-container" id="tr-wd-goals-timeline"></div><div class="trophy-cabinet" id="tr-wd-trophy-room"></div>
     </div>
   </div>
@@ -617,8 +614,6 @@
     </div>
 
     <div class="strategy-block-wrapper">
-      
-      <!-- 1. Topstep Live Strategic Flow -->
       <div class="strategy-card">
         <div class="strategy-header">
           <span class="strategy-title">🚀 1. Topstep Live — Strategic Flow</span>
@@ -647,169 +642,6 @@
           </div>
         </div>
       </div>
-
-      <!-- 2. Tradeify Strategic Flow -->
-      <div class="strategy-card">
-        <div class="strategy-header">
-          <span class="strategy-title">⚡ 2. Tradeify — Strategic Flow</span>
-          <span class="badge badge-yellow">PROP CLUSTERS</span>
-        </div>
-        <div class="chevron-container" id="strategy-steps-tdfy">
-          <div class="chevron-step" id="step-tdfy-1">
-            <div class="chevron-content"><span class="chevron-num">PHASE 1</span><span class="chevron-text">Take Payout 1 and start trading Accounts 3–5</span></div>
-            <div class="chevron-badge-bar"><span class="step-focus-badge" id="badge-tdfy-1" style="display:none;">📍 YOU ARE HERE</span><span class="step-complete-badge" id="badge-complete-tdfy-1" style="display:none;">✓ COMPLETE</span><button class="btn-set-chevron-focus" onclick="setStrategyFocus('tdfy', 1)">Set Focus</button></div>
-          </div>
-          <div class="chevron-step" id="step-tdfy-2">
-            <div class="chevron-content"><span class="chevron-num">PHASE 2</span><span class="chevron-text">Rebuild $52,100 buffer for cluster one and build initial $52,100 buffer for cluster two</span></div>
-            <div class="chevron-badge-bar"><span class="step-focus-badge" id="badge-tdfy-2" style="display:none;">📍 YOU ARE HERE</span><span class="step-complete-badge" id="badge-complete-tdfy-2" style="display:none;">✓ COMPLETE</span><button class="btn-set-chevron-focus" onclick="setStrategyFocus('tdfy', 2)">Set Focus</button></div>
-          </div>
-          <div class="chevron-step" id="step-tdfy-3">
-            <div class="chevron-content"><span class="chevron-num">PHASE 3</span><span class="chevron-text">Take Payout 2 for Cluster 1 & Payout 1 for Cluster 2</span></div>
-            <div class="chevron-badge-bar"><span class="step-focus-badge" id="badge-tdfy-3" style="display:none;">📍 YOU ARE HERE</span><span class="step-complete-badge" id="badge-complete-tdfy-3" style="display:none;">✓ COMPLETE</span><button class="btn-set-chevron-focus" onclick="setStrategyFocus('tdfy', 3)">Set Focus</button></div>
-          </div>
-          <div class="chevron-step" id="step-tdfy-4">
-            <div class="chevron-content"><span class="chevron-num">PHASE 4</span><span class="chevron-text">Keep taking payouts until progressing to Live Accounts</span></div>
-            <div class="chevron-badge-bar"><span class="step-focus-badge" id="badge-tdfy-4" style="display:none;">📍 YOU ARE HERE</span><span class="step-complete-badge" id="badge-complete-tdfy-4" style="display:none;">✓ COMPLETE</span><button class="btn-set-chevron-focus" onclick="setStrategyFocus('tdfy', 4)">Set Focus</button></div>
-          </div>
-          <div class="chevron-step" id="step-tdfy-5">
-            <div class="chevron-content"><span class="chevron-num">PHASE 5</span><span class="chevron-text">Build safety buffer of $52,100 across all live accounts</span></div>
-            <div class="chevron-badge-bar"><span class="step-focus-badge" id="badge-tdfy-5" style="display:none;">📍 YOU ARE HERE</span><span class="step-complete-badge" id="badge-complete-tdfy-5" style="display:none;">✓ COMPLETE</span><button class="btn-set-chevron-focus" onclick="setStrategyFocus('tdfy', 5)">Set Focus</button></div>
-          </div>
-          <div class="chevron-step" id="step-tdfy-6">
-            <div class="chevron-content"><span class="chevron-num">PHASE 6</span><span class="chevron-text">Use Live Accounts as Daily ATM</span></div>
-            <div class="chevron-badge-bar"><span class="step-focus-badge" id="badge-tdfy-6" style="display:none;">📍 YOU ARE HERE</span><span class="step-complete-badge" id="badge-complete-tdfy-6" style="display:none;">✓ COMPLETE</span><button class="btn-set-chevron-focus" onclick="setStrategyFocus('tdfy', 6)">Set Focus</button></div>
-          </div>
-        </div>
-      </div>
-
-      <!-- 3. FundedNext (FN) Strategic Flow -->
-      <div class="strategy-card">
-        <div class="strategy-header">
-          <span class="strategy-title">🔷 3. FundedNext (FN) — Strategic Flow</span>
-          <span class="badge badge-blue">PROP CLUSTERS</span>
-        </div>
-        <div class="chevron-container" id="strategy-steps-fn">
-          <div class="chevron-step" id="step-fn-1">
-            <div class="chevron-content"><span class="chevron-num">PHASE 1</span><span class="chevron-text">Build $52,100 account buffer</span></div>
-            <div class="chevron-badge-bar"><span class="step-focus-badge" id="badge-fn-1" style="display:none;">📍 YOU ARE HERE</span><span class="step-complete-badge" id="badge-complete-fn-1" style="display:none;">✓ COMPLETE</span><button class="btn-set-chevron-focus" onclick="setStrategyFocus('fn', 1)">Set Focus</button></div>
-          </div>
-          <div class="chevron-step" id="step-fn-2">
-            <div class="chevron-content"><span class="chevron-num">PHASE 2</span><span class="chevron-text">Take payout one at $53,100 balance</span></div>
-            <div class="chevron-badge-bar"><span class="step-focus-badge" id="badge-fn-2" style="display:none;">📍 YOU ARE HERE</span><span class="step-complete-badge" id="badge-complete-fn-2" style="display:none;">✓ COMPLETE</span><button class="btn-set-chevron-focus" onclick="setStrategyFocus('fn', 2)">Set Focus</button></div>
-          </div>
-          <div class="chevron-step" id="step-fn-3">
-            <div class="chevron-content"><span class="chevron-num">PHASE 3</span><span class="chevron-text">Take Payout 2</span></div>
-            <div class="chevron-badge-bar"><span class="step-focus-badge" id="badge-fn-3" style="display:none;">📍 YOU ARE HERE</span><span class="step-complete-badge" id="badge-complete-fn-3" style="display:none;">✓ COMPLETE</span><button class="btn-set-chevron-focus" onclick="setStrategyFocus('fn', 3)">Set Focus</button></div>
-          </div>
-          <div class="chevron-step" id="step-fn-4">
-            <div class="chevron-content"><span class="chevron-num">PHASE 4</span><span class="chevron-text">Take as many payouts until reaching Live Accounts</span></div>
-            <div class="chevron-badge-bar"><span class="step-focus-badge" id="badge-fn-4" style="display:none;">📍 YOU ARE HERE</span><span class="step-complete-badge" id="badge-complete-fn-4" style="display:none;">✓ COMPLETE</span><button class="btn-set-chevron-focus" onclick="setStrategyFocus('fn', 4)">Set Focus</button></div>
-          </div>
-          <div class="chevron-step" id="step-fn-5">
-            <div class="chevron-content"><span class="chevron-num">PHASE 5</span><span class="chevron-text">Build initial $52,100 safety buffer in live accounts</span></div>
-            <div class="chevron-badge-bar"><span class="step-focus-badge" id="badge-fn-5" style="display:none;">📍 YOU ARE HERE</span><span class="step-complete-badge" id="badge-complete-fn-5" style="display:none;">✓ COMPLETE</span><button class="btn-set-chevron-focus" onclick="setStrategyFocus('fn', 5)">Set Focus</button></div>
-          </div>
-          <div class="chevron-step" id="step-fn-6">
-            <div class="chevron-content"><span class="chevron-num">PHASE 6</span><span class="chevron-text">Use Live Accounts as ATM machines</span></div>
-            <div class="chevron-badge-bar"><span class="step-focus-badge" id="badge-fn-6" style="display:none;">📍 YOU ARE HERE</span><span class="step-complete-badge" id="badge-complete-fn-6" style="display:none;">✓ COMPLETE</span><button class="btn-set-chevron-focus" onclick="setStrategyFocus('fn', 6)">Set Focus</button></div>
-          </div>
-        </div>
-      </div>
-
-      <!-- 4. Futures Elite (FE) Strategic Flow -->
-      <div class="strategy-card">
-        <div class="strategy-header">
-          <span class="strategy-title">🏆 4. Futures Elite (FE) — Strategic Flow</span>
-          <span class="badge badge-red">PROP CLUSTERS</span>
-        </div>
-        <div class="chevron-container" id="strategy-steps-fe">
-          <div class="chevron-step" id="step-fe-1">
-            <div class="chevron-content"><span class="chevron-num">PHASE 1</span><span class="chevron-text">Recover drawdown and get to 100k balance</span></div>
-            <div class="chevron-badge-bar"><span class="step-focus-badge" id="badge-fe-1" style="display:none;">📍 YOU ARE HERE</span><span class="step-complete-badge" id="badge-complete-fe-1" style="display:none;">✓ COMPLETE</span><button class="btn-set-chevron-focus" onclick="setStrategyFocus('fe', 1)">Set Focus</button></div>
-          </div>
-          <div class="chevron-step" id="step-fe-2">
-            <div class="chevron-content"><span class="chevron-num">PHASE 2</span><span class="chevron-text">Grow account above initial safety buffer of $103,100</span></div>
-            <div class="chevron-badge-bar"><span class="step-focus-badge" id="badge-fe-2" style="display:none;">📍 YOU ARE HERE</span><span class="step-complete-badge" id="badge-complete-fe-2" style="display:none;">✓ COMPLETE</span><button class="btn-set-chevron-focus" onclick="setStrategyFocus('fe', 2)">Set Focus</button></div>
-          </div>
-          <div class="chevron-step" id="step-fe-3">
-            <div class="chevron-content"><span class="chevron-num">PHASE 3</span><span class="chevron-text">Take first payout at $107,000</span></div>
-            <div class="chevron-badge-bar"><span class="step-focus-badge" id="badge-fe-3" style="display:none;">📍 YOU ARE HERE</span><span class="step-complete-badge" id="badge-complete-fe-3" style="display:none;">✓ COMPLETE</span><button class="btn-set-chevron-focus" onclick="setStrategyFocus('fe', 3)">Set Focus</button></div>
-          </div>
-          <div class="chevron-step" id="step-fe-4">
-            <div class="chevron-content"><span class="chevron-num">PHASE 4</span><span class="chevron-text">Take payouts until reaching Live Accounts</span></div>
-            <div class="chevron-badge-bar"><span class="step-focus-badge" id="badge-fe-4" style="display:none;">📍 YOU ARE HERE</span><span class="step-complete-badge" id="badge-complete-fe-4" style="display:none;">✓ COMPLETE</span><button class="btn-set-chevron-focus" onclick="setStrategyFocus('fe', 4)">Set Focus</button></div>
-          </div>
-          <div class="chevron-step" id="step-fe-5">
-            <div class="chevron-content"><span class="chevron-num">PHASE 5</span><span class="chevron-text">Trade Live Accounts with base hits</span></div>
-            <div class="chevron-badge-bar"><span class="step-focus-badge" id="badge-fe-5" style="display:none;">📍 YOU ARE HERE</span><span class="step-complete-badge" id="badge-complete-fe-5" style="display:none;">✓ COMPLETE</span><button class="btn-set-chevron-focus" onclick="setStrategyFocus('fe', 5)">Set Focus</button></div>
-          </div>
-        </div>
-      </div>
-
-      <!-- 5. Topstep Evals Strategic Flow -->
-      <div class="strategy-card">
-        <div class="strategy-header">
-          <span class="strategy-title">🎯 5. Topstep Evals — Strategic Flow</span>
-          <span class="badge badge-purple">EVALUATION PATH</span>
-        </div>
-        <div class="chevron-container" id="strategy-steps-tseval">
-          <div class="chevron-step" id="step-tseval-1">
-            <div class="chevron-content"><span class="chevron-num">PHASE 1</span><span class="chevron-text">Pass Eval 1 slowly</span></div>
-            <div class="chevron-badge-bar"><span class="step-focus-badge" id="badge-tseval-1" style="display:none;">📍 YOU ARE HERE</span><span class="step-complete-badge" id="badge-complete-tseval-1" style="display:none;">✓ COMPLETE</span><button class="btn-set-chevron-focus" onclick="setStrategyFocus('tseval', 1)">Set Focus</button></div>
-          </div>
-          <div class="chevron-step" id="step-tseval-2">
-            <div class="chevron-content"><span class="chevron-num">PHASE 2</span><span class="chevron-text">Once completed, purchase 4 more and slowly pass those</span></div>
-            <div class="chevron-badge-bar"><span class="step-focus-badge" id="badge-tseval-2" style="display:none;">📍 YOU ARE HERE</span><span class="step-complete-badge" id="badge-complete-tseval-2" style="display:none;">✓ COMPLETE</span><button class="btn-set-chevron-focus" onclick="setStrategyFocus('tseval', 2)">Set Focus</button></div>
-          </div>
-          <div class="chevron-step" id="step-tseval-3">
-            <div class="chevron-content"><span class="chevron-num">PHASE 3</span><span class="chevron-text">Copy-trade accounts with base hits once holding 5 accounts & build buffer</span></div>
-            <div class="chevron-badge-bar"><span class="step-focus-badge" id="badge-tseval-3" style="display:none;">📍 YOU ARE HERE</span><span class="step-complete-badge" id="badge-complete-tseval-3" style="display:none;">✓ COMPLETE</span><button class="btn-set-chevron-focus" onclick="setStrategyFocus('tseval', 3)">Set Focus</button></div>
-          </div>
-          <div class="chevron-step" id="step-tseval-4">
-            <div class="chevron-content"><span class="chevron-num">PHASE 4</span><span class="chevron-text">Take Payout 1</span></div>
-            <div class="chevron-badge-bar"><span class="step-focus-badge" id="badge-tseval-4" style="display:none;">📍 YOU ARE HERE</span><span class="step-complete-badge" id="badge-complete-tseval-4" style="display:none;">✓ COMPLETE</span><button class="btn-set-chevron-focus" onclick="setStrategyFocus('tseval', 4)">Set Focus</button></div>
-          </div>
-          <div class="chevron-step" id="step-tseval-5">
-            <div class="chevron-content"><span class="chevron-num">PHASE 5</span><span class="chevron-text">Take payouts until reaching Live Accounts</span></div>
-            <div class="chevron-badge-bar"><span class="step-focus-badge" id="badge-tseval-5" style="display:none;">📍 YOU ARE HERE</span><span class="step-complete-badge" id="badge-complete-tseval-5" style="display:none;">✓ COMPLETE</span><button class="btn-set-chevron-focus" onclick="setStrategyFocus('tseval', 5)">Set Focus</button></div>
-          </div>
-          <div class="chevron-step" id="step-tseval-6">
-            <div class="chevron-content"><span class="chevron-num">PHASE 6</span><span class="chevron-text">Trade Live Accounts with base hits</span></div>
-            <div class="chevron-badge-bar"><span class="step-focus-badge" id="badge-tseval-6" style="display:none;">📍 YOU ARE HERE</span><span class="step-complete-badge" id="badge-complete-tseval-6" style="display:none;">✓ COMPLETE</span><button class="btn-set-chevron-focus" onclick="setStrategyFocus('tseval', 6)">Set Focus</button></div>
-          </div>
-        </div>
-      </div>
-
-      <!-- 6. Tradovate Live Strategic Flow -->
-      <div class="strategy-card">
-        <div class="strategy-header">
-          <span class="strategy-title">🛡️ 6. Tradovate Live — Strategic Flow</span>
-          <span class="badge badge-cyan">SECONDARY LIVE</span>
-        </div>
-        <div class="chevron-container" id="strategy-steps-tr">
-          <div class="chevron-step" id="step-tr-1">
-            <div class="chevron-content"><span class="chevron-num">PHASE 1</span><span class="chevron-text">Grow account balance to $2,500</span></div>
-            <div class="chevron-badge-bar"><span class="step-focus-badge" id="badge-tr-1" style="display:none;">📍 YOU ARE HERE</span><span class="step-complete-badge" id="badge-complete-tr-1" style="display:none;">✓ COMPLETE</span><button class="btn-set-chevron-focus" onclick="setStrategyFocus('tr', 1)">Set Focus</button></div>
-          </div>
-          <div class="chevron-step" id="step-tr-2">
-            <div class="chevron-content"><span class="chevron-num">PHASE 2</span><span class="chevron-text">Grow account balance to $5,000</span></div>
-            <div class="chevron-badge-bar"><span class="step-focus-badge" id="badge-tr-2" style="display:none;">📍 YOU ARE HERE</span><span class="step-complete-badge" id="badge-complete-tr-2" style="display:none;">✓ COMPLETE</span><button class="btn-set-chevron-focus" onclick="setStrategyFocus('tr', 2)">Set Focus</button></div>
-          </div>
-          <div class="chevron-step" id="step-tr-3">
-            <div class="chevron-content"><span class="chevron-num">PHASE 3</span><span class="chevron-text">Grow account balance to $10,000</span></div>
-            <div class="chevron-badge-bar"><span class="step-focus-badge" id="badge-tr-3" style="display:none;">📍 YOU ARE HERE</span><span class="step-complete-badge" id="badge-complete-tr-3" style="display:none;">✓ COMPLETE</span><button class="btn-set-chevron-focus" onclick="setStrategyFocus('tr', 3)">Set Focus</button></div>
-          </div>
-          <div class="chevron-step" id="step-tr-4">
-            <div class="chevron-content"><span class="chevron-num">PHASE 4</span><span class="chevron-text">Take regular withdrawals while growing to $25,000</span></div>
-            <div class="chevron-badge-bar"><span class="step-focus-badge" id="badge-tr-4" style="display:none;">📍 YOU ARE HERE</span><span class="step-complete-badge" id="badge-complete-tr-4" style="display:none;">✓ COMPLETE</span><button class="btn-set-chevron-focus" onclick="setStrategyFocus('tr', 4)">Set Focus</button></div>
-          </div>
-          <div class="chevron-step" id="step-tr-5">
-            <div class="chevron-content"><span class="chevron-num">PHASE 5</span><span class="chevron-text">Establish as Secondary Trading Account</span></div>
-            <div class="chevron-badge-bar"><span class="step-focus-badge" id="badge-tr-5" style="display:none;">📍 YOU ARE HERE</span><span class="step-complete-badge" id="badge-complete-tr-5" style="display:none;">✓ COMPLETE</span><button class="btn-set-chevron-focus" onclick="setStrategyFocus('tr', 5)">Set Focus</button></div>
-          </div>
-        </div>
-      </div>
-
     </div>
   </div>
 
@@ -873,48 +705,6 @@
       const dateStr = now.toLocaleDateString([], { month: 'short', day: 'numeric', year: 'numeric' });
       const el = document.getElementById('dashboard-load-time');
       if (el) el.innerText = `Updated: ${dateStr} • ${timeStr} EDT`;
-    }
-
-    // Robust Date & Week Tag Parser Engine
-    function getWeekTagFromDate(dateVal) {
-      if (dateVal === null || dateVal === undefined) return null;
-      let str = dateVal.toString().trim();
-      if (str === '' || str.includes('%')) return null;
-
-      if (str.toUpperCase().startsWith('W')) {
-        return str.toUpperCase();
-      }
-
-      let parsedDate = null;
-
-      if (str.includes('Date(')) {
-        const matches = str.match(/\d+/g);
-        if (matches && matches.length >= 3) {
-          const year = parseInt(matches[0], 10);
-          const month = parseInt(matches[1], 10);
-          const day = parseInt(matches[2], 10);
-          parsedDate = new Date(year, month, day);
-        }
-      } 
-      else if (str.includes('/')) {
-        const parts = str.split('/');
-        if (parts.length >= 2) {
-          const month = parseInt(parts[0], 10) - 1;
-          const day = parseInt(parts[1], 10);
-          let year = parts[2] ? parseInt(parts[2], 10) : 2026;
-          if (year < 100) year += 2000;
-          parsedDate = new Date(year, month, day);
-        }
-      }
-
-      if (parsedDate && !isNaN(parsedDate.getTime())) {
-        parsedDate.setDate(parsedDate.getDate() + 4 - (parsedDate.getDay() || 7));
-        const yearStart = new Date(parsedDate.getFullYear(), 0, 1);
-        const weekNo = Math.ceil((((parsedDate - yearStart) / 86400000) + 1) / 7);
-        return `W${weekNo}`;
-      }
-
-      return null;
     }
 
     function saveCardRiskAmount(id) {
@@ -1021,193 +811,67 @@
       return num;
     }
 
-    function formatTargetValue(val, extraNote, isWithdrawal) {
-      let pctStr = 'Progress: 0.0%';
-      if (val !== undefined && val !== null && val !== '') {
-        let str = val.toString().trim();
-        let num = parseFloat(str.replace(/[\$,%]/g, ''));
-        if (!isNaN(num)) {
-          if (num > -1 && num < 1 && num !== 0) {
-            pctStr = `Progress: ${(num * 100).toFixed(1)}%`;
-          } else {
-            pctStr = `Progress: ${num.toFixed(1)}%`;
-          }
-        } else if (str.length > 0) {
-          pctStr = `Progress: ${str}`;
-        }
-      }
-      return isWithdrawal ? `${pctStr}${extraNote ? ` • Condition: ${extraNote}` : ''}` : pctStr;
-    }
+    /* REWRITTEN MULTI-LINE INDIVIDUAL MILESTONE GRAPH LOGIC */
+    function renderCategoryEmbedChart(canvasId, items, baseColor) {
+      const ctx = document.getElementById(canvasId);
+      if (!ctx) return;
 
-    function setStrategyFocus(type, stepNum) {
-      localStorage.setItem(`strategy_focus_${type}`, stepNum.toString());
-      loadStrategyFocusUI();
-    }
-
-    function loadStrategyFocusUI() {
-      const configs = [
-        { type: 'ts', maxSteps: 5 },
-        { type: 'tr', maxSteps: 5 },
-        { type: 'tdfy', maxSteps: 6 },
-        { type: 'fn', maxSteps: 6 },
-        { type: 'fe', maxSteps: 5 },
-        { type: 'tseval', maxSteps: 6 }
+      const defaultColors = [
+        '#2962ff', '#089981', '#f5c000', '#ab47bc', 
+        '#00bcd4', '#f23645', '#ff9800', '#e91e63'
       ];
 
-      configs.forEach(cfg => {
-        const activeStepStr = localStorage.getItem(`strategy_focus_${cfg.type}`);
-        const activeStep = activeStepStr ? parseInt(activeStepStr, 10) : 0;
+      const datasets = items.map((item, idx) => {
+        const lineColor = defaultColors[idx % defaultColors.length];
+        return {
+          label: item.title,
+          data: [0, item.pct],
+          borderColor: lineColor,
+          backgroundColor: lineColor,
+          borderWidth: 2,
+          pointRadius: 4,
+          pointHoverRadius: 6,
+          tension: 0.2,
+          fill: false
+        };
+      });
 
-        for (let i = 1; i <= cfg.maxSteps; i++) {
-          const stepEl = document.getElementById(`step-${cfg.type}-${i}`);
-          const badgeEl = document.getElementById(`badge-${cfg.type}-${i}`);
-          const badgeCompleteEl = document.getElementById(`badge-complete-${cfg.type}-${i}`);
+      if (categoryChartInstances[canvasId]) {
+        categoryChartInstances[canvasId].destroy();
+      }
 
-          if (stepEl) {
-            stepEl.classList.remove('is-current-focus', 'is-past-complete');
-            if (badgeEl) badgeEl.style.display = 'none';
-            if (badgeCompleteEl) badgeCompleteEl.style.display = 'none';
-
-            if (activeStep > 0) {
-              if (i === activeStep) {
-                stepEl.classList.add('is-current-focus');
-                if (badgeEl) badgeEl.style.display = 'inline-block';
-              } else if (i < activeStep) {
-                stepEl.classList.add('is-past-complete');
-                if (badgeCompleteEl) badgeCompleteEl.style.display = 'inline-block';
+      categoryChartInstances[canvasId] = new Chart(ctx, {
+        type: 'line',
+        data: {
+          labels: ['Baseline (0%)', 'Current Status'],
+          datasets: datasets.length > 0 ? datasets : [{
+            label: 'No Active Milestones',
+            data: [0, 0],
+            borderColor: '#363a45',
+            fill: false
+          }]
+        },
+        options: {
+          responsive: true,
+          maintainAspectRatio: false,
+          plugins: {
+            legend: {
+              display: true,
+              position: 'top',
+              labels: { color: '#d1d4dc', font: { size: 10, weight: 'bold' }, boxWidth: 10 }
+            },
+            tooltip: {
+              callbacks: {
+                label: function(item) { return ` ${item.dataset.label}: ${item.raw.toFixed(1)}%`; }
               }
             }
+          },
+          scales: {
+            x: { grid: { color: 'rgba(54, 58, 69, 0.4)' }, ticks: { color: '#787b86', font: { size: 10 } } },
+            y: { min: 0, max: 100, grid: { color: 'rgba(54, 58, 69, 0.4)' }, ticks: { color: '#d1d4dc', callback: function(val) { return val + '%'; } } }
           }
         }
       });
-    }
-
-    function toggleCoachOverlay() {
-      document.getElementById('coach-overlay').classList.toggle('active');
-    }
-
-    function sendCoachQuickPrompt(promptText) {
-      document.getElementById('coach-input-field').value = promptText;
-      sendCoachMessage();
-    }
-
-    function sendCoachMessage() {
-      const inputEl = document.getElementById('coach-input-field');
-      const text = inputEl.value.trim();
-      if (!text) return;
-
-      const historyEl = document.getElementById('coach-history');
-      historyEl.innerHTML += `<div class="chat-msg user">${text}</div>`;
-      inputEl.value = '';
-
-      setTimeout(() => {
-        let reply = "Remember to execute base hits and stick strictly to your risk per trade!";
-        const lower = text.toLowerCase();
-
-        if (lower.includes('focus') || lower.includes('main')) {
-          const tsFocus = localStorage.getItem('strategy_focus_ts') || '1';
-          const tdfyFocus = localStorage.getItem('strategy_focus_tdfy') || '1';
-          reply = `🎯 **Current Portfolio Focus:**\n• **Topstep Live:** Phase ${tsFocus}\n• **Tradeify:** Phase ${tdfyFocus}\nPreserve capital above all else!`;
-        } else if (lower.includes('tradeify')) {
-          reply = "⚡ **Tradeify Strategy:** Trade all 5 TDFY accounts together in a single copy-trading cluster with disciplined base hits!";
-        } else if (lower.includes('sizing') || lower.includes('risk')) {
-          reply = "⚠️ **Risk Allocation:** Select your target risk per account ($100–$500) right inside each account card on the Daily Command Center!";
-        }
-
-        historyEl.innerHTML += `<div class="chat-msg bot">${reply}</div>`;
-        historyEl.scrollTop = historyEl.scrollHeight;
-      }, 400);
-    }
-
-    function getESTDateString() {
-      const now = new Date();
-      const estString = new Date(now.toLocaleString("en-US", {timeZone: "America/New_York"}));
-      if (estString.getHours() >= 18) estString.setDate(estString.getDate() + 1);
-      return estString.toISOString().split('T')[0];
-    }
-
-    function getStoredExecStatuses() {
-      const sessionKey = `trade_exec_status_${getESTDateString()}`;
-      try { return JSON.parse(localStorage.getItem(sessionKey) || '{}'); } catch(e) { return {}; }
-    }
-
-    function setAccountExecStatus(acctId, status) {
-      const sessionKey = `trade_exec_status_${getESTDateString()}`;
-      const stored = getStoredExecStatuses();
-      stored[acctId] = status;
-      localStorage.setItem(sessionKey, JSON.stringify(stored));
-      applyExecStatusUI(acctId, status);
-      updateDailySummaryCounters();
-    }
-
-    function applyExecStatusUI(acctId, status) {
-      const cardEl = document.getElementById(`card-${acctId}`);
-      const barEl = document.getElementById(`exec-bar-${acctId}`);
-      const titleTagEl = document.getElementById(`tag-completed-${acctId}`);
-      if (!cardEl || !barEl) return;
-
-      const btns = barEl.querySelectorAll('.exec-btn');
-      btns.forEach(b => b.classList.remove('active'));
-
-      cardEl.classList.remove('card-trading-active');
-
-      if (status === 'complete') {
-        barEl.querySelector('.state-complete').classList.add('active');
-        if (titleTagEl) titleTagEl.style.display = 'inline-block';
-        if (!forceShowCompleted) cardEl.classList.add('hidden-completed');
-        else cardEl.classList.remove('hidden-completed');
-      } else if (status === 'in-progress') {
-        barEl.querySelector('.state-in-progress').classList.add('active');
-        if (titleTagEl) titleTagEl.style.display = 'none';
-        cardEl.classList.remove('hidden-completed');
-        cardEl.classList.add('card-trading-active');
-      } else {
-        barEl.querySelector('.state-not-started').classList.add('active');
-        if (titleTagEl) titleTagEl.style.display = 'none';
-        cardEl.classList.remove('hidden-completed');
-      }
-    }
-
-    function loadAllExecStatuses() {
-      const stored = getStoredExecStatuses();
-      const allCards = document.querySelectorAll('#view-daily .card');
-      allCards.forEach(card => {
-        const id = card.id.replace('card-', '');
-        const status = stored[id] || 'not-started';
-        applyExecStatusUI(id, status);
-      });
-      updateDailySummaryCounters();
-    }
-
-    function toggleCompletedCardsVisibility() {
-      forceShowCompleted = !forceShowCompleted;
-      const toggleBtn = document.getElementById('toggle-completed-view-btn');
-      if (toggleBtn) {
-        if (forceShowCompleted) {
-          toggleBtn.classList.add('active');
-          toggleBtn.innerHTML = '👁️ Showing All (Completed Visible)';
-        } else {
-          toggleBtn.innerHTML = `👁️ Show Completed (<span id="hidden-completed-counter">0</span>)`;
-        }
-      }
-      loadAllExecStatuses();
-    }
-
-    function updateDailySummaryCounters() {
-      const stored = getStoredExecStatuses();
-      let activeCount = 0;
-      let completedCount = 0;
-
-      Object.values(stored).forEach(st => {
-        if (st === 'in-progress') activeCount++;
-        if (st === 'complete') completedCount++;
-      });
-
-      document.getElementById('summary-focus-count').innerText = `${activeCount} Active`;
-      document.getElementById('summary-completed-today-count').innerText = `${completedCount} Done`;
-      
-      const counterEl = document.getElementById('hidden-completed-counter');
-      if (counterEl) counterEl.innerText = completedCount;
     }
 
     function switchMainView(viewName, btn) {
@@ -1222,890 +886,37 @@
         document.getElementById('view-daily').style.display = 'block';
       } else if (viewName === 'goal-tracker') {
         document.getElementById('view-goal-tracker').style.display = 'block';
-        rotateEncouragement();
       } else if (viewName === 'roadmap') {
         document.getElementById('view-roadmap').style.display = 'block';
-        loadStrategyFocusUI();
       }
     }
-
-    function rotateEncouragement() {
-      const idx = Math.floor(Math.random() * encouragementQuotes.length);
-      document.getElementById('encouragement-msg').innerText = `"${encouragementQuotes[idx]}"`;
-    }
-
-    function filterDailyCategory(cat, btn) {
-      document.querySelectorAll('#view-daily .filter-btn').forEach(b => b.classList.remove('active'));
-      btn.classList.add('active');
-
-      const blocks = {
-        'topstep': document.getElementById('block-topstep'),
-        'tdfy': document.getElementById('block-tdfy'),
-        'fe': document.getElementById('block-fe'),
-        'fn': document.getElementById('block-fn'),
-        'ts-eval': document.getElementById('block-ts-eval')
-      };
-
-      if (cat === 'all') {
-        Object.values(blocks).forEach(b => b.style.display = 'block');
-      } else {
-        Object.keys(blocks).forEach(k => {
-          blocks[k].style.display = (k === cat) ? 'block' : 'none';
-        });
-      }
-    }
-
-    function filterRoadmapCategory(cat, btn) {
-      document.querySelectorAll('#view-goal-tracker .filter-btn').forEach(b => b.classList.remove('active'));
-      btn.classList.add('active');
-
-      const blocks = document.querySelectorAll('.roadmap-category-block');
-      if (cat === 'all') {
-        blocks.forEach(b => b.style.display = 'block');
-      } else {
-        blocks.forEach(b => {
-          b.style.display = (b.id === cat) ? 'block' : 'none';
-        });
-      }
-    }
-
-    function getSeenCompletedMilestones() {
-      try { return JSON.parse(localStorage.getItem('seen_milestones_v2') || '[]'); } catch(e) { return []; }
-    }
-
-    function saveSeenCompletedMilestone(mKey) {
-      const list = getSeenCompletedMilestones();
-      if (!list.includes(mKey)) {
-        list.push(mKey);
-        localStorage.setItem('seen_milestones_v2', JSON.stringify(list));
-      }
-    }
-
-    function triggerCelebrationModal(goalTitle) {
-      document.getElementById('modal-milestone-title').innerText = goalTitle;
-      document.getElementById('celebration-modal').classList.add('active');
-    }
-
-    function closeCelebrationModal() {
-      document.getElementById('celebration-modal').classList.remove('active');
-    }
-
-    function testCelebrationModal() {
-      triggerCelebrationModal("Topstep Milestone: $5,000 Profit Target Unlocked!");
-    }
-
-    function getGoalTag(title) {
-      const t = title.toLowerCase();
-      if (t.includes('$') || t.includes('payout') || t.includes('profit') || t.includes('withdraw') || t.includes('balance')) {
-        return { text: 'PROFIT', class: 'tag-green' };
-      } else if (t.includes('day') || t.includes('tilt') || t.includes('eval') || t.includes('pass') || t.includes('rule') || t.includes('discipline')) {
-        return { text: 'PROCESS', class: 'tag-purple' };
-      }
-      return { text: 'MILESTONE', class: 'tag-blue' };
-    }
-
-    function updateCardData(acctName, progPct, balance, goalVal, drawdownVal) {
-      if (!acctName) return;
-
-      const cleanName = acctName.toLowerCase().replace(/[\r\n]+/g, '').replace(/[^a-z0-9]/g, '');
-      let targetId = null;
-
-      if (cleanName === 'topsteplive' || (cleanName.includes('topstep') && cleanName.includes('live'))) {
-        targetId = 'topstep-live';
-      } else if (cleanName.includes('50k') || cleanName.includes('eval') || cleanName.includes('topstep50k')) {
-        targetId = 'topstep-50k-eval';
-      } else if (cleanName.includes('tdfy') || cleanName.includes('tradeify')) {
-        if (cleanName.includes('1')) targetId = 'tdfy-1';
-        else if (cleanName.includes('2')) targetId = 'tdfy-2';
-        else if (cleanName.includes('3')) targetId = 'tdfy-3';
-        else if (cleanName.includes('4')) targetId = 'tdfy-4';
-        else if (cleanName.includes('5')) targetId = 'tdfy-5';
-      } else if (cleanName.includes('fe') || cleanName.includes('futureselite')) {
-        if (cleanName.includes('1')) targetId = 'fe-1';
-        else if (cleanName.includes('2')) targetId = 'fe-2';
-        else if (cleanName.includes('3')) targetId = 'fe-3';
-        else if (cleanName.includes('4')) targetId = 'fe-4';
-        else if (cleanName.includes('5')) targetId = 'fe-5';
-      } else if (cleanName.includes('fn') || cleanName.includes('fundednext')) {
-        if (cleanName.includes('1')) targetId = 'fn-1';
-        else if (cleanName.includes('2')) targetId = 'fn-2';
-        else if (cleanName.includes('3')) targetId = 'fn-3';
-      }
-
-      if (targetId) {
-        const titleEl = document.getElementById(`title-${targetId}`);
-        const balEl = document.getElementById(`val-${targetId}-bal`);
-        const goalEl = document.getElementById(`val-${targetId}-goal`);
-        const pctEl = document.getElementById(`val-${targetId}-pct`);
-        const barEl = document.getElementById(`bar-${targetId}-pct`);
-        const distEl = document.getElementById(`dist-${targetId}`);
-        const badgeEl = document.getElementById(`badge-${targetId}`);
-        
-        const heroBoxEl = document.getElementById(`hero-box-${targetId}`);
-        const heroLabelEl = document.getElementById(`label-${targetId}`);
-        const lblPctEl = document.getElementById(`lbl-pct-${targetId}`);
-
-        if (titleEl && acctName && targetId === 'topstep-50k-eval') titleEl.innerText = acctName;
-
-        const numBal = parseNumericValue(balance);
-        const numGoal = parseNumericValue(goalVal);
-        const numDraw = parseNumericValue(drawdownVal);
-        const rawPct = parseNumericPercent(progPct);
-
-        parsedBalanceMap[targetId] = numBal;
-        parsedGoalMap[targetId] = numGoal;
-        parsedProgressMap[targetId] = rawPct;
-
-        let isDanger = false;
-        if (numBal > 0 && numDraw > 0) {
-          const cushion = numBal - numDraw;
-          if (cushion <= DANGER_ZONE_THRESHOLD) {
-            isDanger = true;
-          }
-        }
-        parsedDangerMap[targetId] = isDanger;
-
-        if (balEl) balEl.innerText = formatCurrency(balance);
-
-        let isRecovery = false;
-
-        if (rawPct < 0 && numGoal > 0) {
-          isRecovery = true;
-          let startingBalance = (numBal - (rawPct/100) * numGoal) / (1 - (rawPct/100));
-          let distToBreakeven = startingBalance - numBal;
-          let microGoal = distToBreakeven / 4; 
-          let recovPct = 0;
-          
-          if (numDraw > 0 && startingBalance > numDraw) {
-              recovPct = ((numBal - numDraw) / (startingBalance - numDraw)) * 100;
-          }
-
-          if (heroLabelEl) heroLabelEl.innerText = 'Recovery Target (Breakeven)';
-          if (goalEl) goalEl.innerText = formatCurrency(startingBalance);
-          if (distEl) {
-            distEl.innerHTML = `Ladder Step: <b>+$${microGoal.toLocaleString('en-US', {maximumFractionDigits:0})}</b> <span style="color:var(--text-muted)">| Total: $${distToBreakeven.toLocaleString('en-US', {maximumFractionDigits:0})}</span>`;
-            distEl.className = 'distance-sub';
-            distEl.style.color = 'var(--accent-yellow)';
-          }
-          if (heroBoxEl) {
-            heroBoxEl.style.background = 'rgba(245, 192, 0, 0.08)';
-            heroBoxEl.style.borderColor = 'rgba(245, 192, 0, 0.25)';
-          }
-          if (lblPctEl) lblPctEl.innerText = 'Safety Padding';
-          if (pctEl) pctEl.innerText = Math.max(0, recovPct).toFixed(1) + '%';
-          if (barEl) {
-            barEl.style.width = Math.max(0, Math.min(100, recovPct)) + '%';
-            barEl.style.backgroundColor = 'var(--accent-yellow)';
-          }
-          if (badgeEl && !isDanger) {
-            badgeEl.className = 'badge badge-yellow';
-            badgeEl.innerText = 'RECOVERY MODE';
-          }
-        } else {
-          if (heroLabelEl) heroLabelEl.innerText = 'Short-Term Goal';
-          if (goalEl) goalEl.innerText = formatCurrency(goalVal);
-          if (heroBoxEl) {
-            heroBoxEl.style.background = 'rgba(41, 98, 255, 0.08)';
-            heroBoxEl.style.borderColor = 'rgba(41, 98, 255, 0.25)';
-          }
-          if (distEl) {
-            if (numGoal > 0 && numBal > 0) {
-              const diff = numGoal - numBal;
-              distEl.innerText = diff > 0 ? `Needed: $${diff.toLocaleString('en-US', {minimumFractionDigits: 2})}` : 'Goal Met!';
-              distEl.className = isDanger ? 'distance-sub distance-danger' : 'distance-sub';
-              if (!isDanger) distEl.style.color = diff > 0 ? 'var(--accent-blue)' : 'var(--accent-green)';
-            } else {
-              distEl.innerText = 'Target Pending';
-            }
-          }
-          if (lblPctEl) lblPctEl.innerText = 'Progress (Col D)';
-          if (pctEl) pctEl.innerText = rawPct.toFixed(1) + '%';
-          if (barEl) {
-            barEl.style.width = Math.min(Math.max(rawPct, 0), 100) + '%';
-            if (rawPct >= 75) barEl.style.backgroundColor = 'var(--accent-green)';
-            else if (rawPct >= 30) barEl.style.backgroundColor = 'var(--accent-blue)';
-            else if (rawPct > 0) barEl.style.backgroundColor = 'var(--accent-yellow)';
-            else barEl.style.backgroundColor = 'var(--accent-red)';
-          }
-        }
-
-        loadCardRiskAmount(targetId);
-      }
-    }
-
-    /* REVISED UNIFIED TRADEIFY EVALUATION ENGINE */
-    function evaluateTradeifyAndGroupRules() {
-      document.querySelectorAll('#view-daily .card').forEach(c => {
-        c.classList.remove('card-lagging', 'card-paused', 'card-danger');
-      });
-
-      let pausedCount = 0;
-      let activeTradeTargets = [];
-
-      // Unified Evaluation across ALL 5 Tradeify Accounts (TDFY 1–5)
-      const tdfyIds = ['tdfy-1', 'tdfy-2', 'tdfy-3', 'tdfy-4', 'tdfy-5'];
-      const tdfyBalances = tdfyIds.map(id => parsedBalanceMap[id] || 0).filter(b => b > 0);
-      
-      let tdfyState = 'synced';
-      if (tdfyBalances.length > 0) {
-        const maxTdfyBal = Math.max(...tdfyBalances);
-        let hasTdfyLagging = false;
-
-        tdfyIds.forEach(id => {
-          const bal = parsedBalanceMap[id] || 0;
-          if (bal > 0 && (maxTdfyBal - bal) >= VARIANCE_TOLERANCE) {
-            hasTdfyLagging = true;
-            setCardState(id, 'lagging', 'FOCUS: LAGGING');
-          } else {
-            setCardDefaultBadge(id);
-          }
-        });
-
-        if (hasTdfyLagging) {
-          tdfyState = 'unsynced';
-          activeTradeTargets.push('Tradeify Lagging Accounts');
-        } else {
-          activeTradeTargets.push('TDFY Cluster (1–5)');
-        }
-      }
-
-      const alertTdfy = document.getElementById('alert-tdfy');
-      if (alertTdfy) {
-        if (tdfyState === 'unsynced') {
-          alertTdfy.className = 'group-alert unsynced';
-          alertTdfy.innerText = '⚠️ TDFY Alignment Active: Solo Trade Lagging Accounts Only';
-        } else {
-          alertTdfy.className = 'group-alert synced';
-          alertTdfy.innerText = '✅ Tradeify Synced: Copy-Trade All 5 TDFY Accounts';
-        }
-      }
-
-      evaluateStandardGroup('fe', ['fe-1', 'fe-2', 'fe-3', 'fe-4', 'fe-5']);
-      evaluateStandardGroup('fn', ['fn-1', 'fn-2', 'fn-3']);
-
-      Object.keys(parsedDangerMap).forEach(id => {
-        if (parsedDangerMap[id]) {
-          const cardEl = document.getElementById(`card-${id}`);
-          const badgeEl = document.getElementById(`badge-${id}`);
-          if (cardEl && badgeEl) {
-            cardEl.classList.remove('card-lagging', 'card-paused');
-            cardEl.classList.add('card-danger');
-            badgeEl.className = 'badge badge-red';
-            badgeEl.innerText = 'CRITICAL MARGIN';
-          }
-        }
-      });
-
-      const planEl = document.getElementById('action-plan-summary');
-      if (planEl) {
-        if (activeTradeTargets.length > 0) {
-          planEl.innerHTML = `Active Execution Targets: <span style="color: var(--accent-yellow);">${activeTradeTargets.join(', ')}</span>. Paused accounts are dimmed below to prevent mis-execution.`;
-        } else {
-          planEl.innerText = 'All groups aligned. Ready for copy-trading across full portfolio.';
-        }
-      }
-
-      let onTrackCount = 0;
-      Object.keys(parsedProgressMap).forEach(k => {
-        if (parsedProgressMap[k] >= 50) onTrackCount++;
-      });
-
-      document.getElementById('summary-ontrack-count').innerText = onTrackCount;
-      const pausedSummaryEl = document.getElementById('summary-paused-count');
-      pausedSummaryEl.innerText = `${pausedCount} Paused`;
-      pausedSummaryEl.style.color = pausedCount > 0 ? 'var(--accent-red)' : 'var(--accent-green)';
-    }
-
-    function evaluateStandardGroup(groupKey, ids) {
-      const balances = ids.map(id => parsedBalanceMap[id] || 0).filter(b => b > 0);
-      if (balances.length === 0) return;
-
-      const maxBal = Math.max(...balances);
-      let hasLagging = false;
-
-      ids.forEach(id => {
-        const bal = parsedBalanceMap[id] || 0;
-        if (bal > 0 && (maxBal - bal) >= 250) {
-          hasLagging = true;
-          setCardState(id, 'lagging', 'FOCUS: LAGGING');
-        } else {
-          setCardDefaultBadge(id);
-        }
-      });
-
-      const alertEl = document.getElementById(`alert-${groupKey}`);
-      if (alertEl) {
-        if (hasLagging) {
-          alertEl.className = 'group-alert unsynced';
-          alertEl.innerText = `⚠️ ${groupKey.toUpperCase()} Out of Sync: Trade Lagging Account`;
-        } else {
-          alertEl.className = 'group-alert synced';
-          alertEl.innerText = `✅ ${groupKey.toUpperCase()} Synced: Ready for Group Copy-Trade`;
-        }
-      }
-    }
-
-    function setCardState(id, state, badgeText) {
-      const cardEl = document.getElementById(`card-${id}`);
-      const badgeEl = document.getElementById(`badge-${id}`);
-
-      if (cardEl) {
-        if (state === 'lagging') cardEl.classList.add('card-lagging');
-        if (state === 'paused') cardEl.classList.add('card-paused');
-      }
-      if (badgeEl) {
-        if (state === 'lagging') badgeEl.className = 'badge badge-yellow';
-        else if (state === 'paused') badgeEl.className = 'badge badge-paused';
-        badgeEl.innerText = badgeText;
-      }
-    }
-
-    function setCardDefaultBadge(id) {
-      const badgeEl = document.getElementById(`badge-${id}`);
-      if (!badgeEl || id === 'topstep-live') return;
-      if (parsedDangerMap[id]) return; 
-
-      const rawPct = parsedProgressMap[id] || 0;
-      if (rawPct < 0) return;
-
-      if (rawPct >= 75) {
-        badgeEl.className = 'badge badge-green';
-        badgeEl.innerText = 'ON TRACK';
-      } else if (rawPct >= 30) {
-        badgeEl.className = 'badge badge-blue';
-        badgeEl.innerText = 'PROGRESSING';
-      } else {
-        badgeEl.className = 'badge';
-        badgeEl.innerText = 'ACTIVE';
-      }
-    }
-
-    function renderChart(dataObj) {
-      const ctx = document.getElementById('milestoneChart');
-      if (!ctx) return;
-
-      const labels = ['Topstep Live', 'Tradovate Live', 'Topstep Prop', 'Tradeify', 'Futures Elite', 'FundedNext', 'TS Withdrawals', 'TR Withdrawals'];
-      const completedData = [
-        dataObj.tsDone, dataObj.trDone, dataObj.tsPropDone, dataObj.tdfyDone, dataObj.feDone, dataObj.fnDone, dataObj.tsWdDone, dataObj.trWdDone
-      ];
-      const remainingData = [
-        dataObj.tsTotal - dataObj.tsDone, dataObj.trTotal - dataObj.trDone,
-        dataObj.tsPropTotal - dataObj.tsPropDone, dataObj.tdfyTotal - dataObj.tdfyDone, 
-        dataObj.feTotal - dataObj.feDone, dataObj.fnTotal - dataObj.fnDone, 
-        dataObj.tsWdTotal - dataObj.tsWdDone, dataObj.trWdTotal - dataObj.trWdDone
-      ];
-
-      if (chartInstance) chartInstance.destroy();
-
-      chartInstance = new Chart(ctx, {
-        type: 'bar',
-        data: {
-          labels: labels,
-          datasets: [
-            { label: 'Unlocked Milestones', data: completedData, backgroundColor: '#089981', borderRadius: 4 },
-            { label: 'Remaining Target', data: remainingData, backgroundColor: '#363a45', borderRadius: 4 }
-          ]
-        },
-        options: {
-          indexAxis: 'y',
-          responsive: true,
-          maintainAspectRatio: false,
-          plugins: { legend: { labels: { color: '#d1d4dc', font: { size: 10, weight: 'bold' } } } },
-          scales: {
-            x: { stacked: true, grid: { color: 'rgba(54, 58, 69, 0.4)' }, ticks: { color: '#787b86' } },
-            y: { stacked: true, grid: { display: false }, ticks: { color: '#d1d4dc', font: { size: 10, weight: 'bold' } } }
-          }
-        }
-      });
-    }
-
-    function renderCategoryEmbedChart(canvasId, items, lineColor) {
-      const ctx = document.getElementById(canvasId);
-      if (!ctx) return;
-
-      const labels = [];
-      const pctData = [];
-      const fullTitles = [];
-
-      items.forEach(item => {
-        let shortName = item.title.length > 18 ? item.title.substring(0, 15) + '...' : item.title;
-        labels.push(shortName);
-        pctData.push(item.pct);
-        fullTitles.push(item.title);
-      });
-
-      if (categoryChartInstances[canvasId]) categoryChartInstances[canvasId].destroy();
-
-      categoryChartInstances[canvasId] = new Chart(ctx, {
-        type: 'line',
-        data: {
-          labels: labels.length > 0 ? labels : ['No Milestones Listed'],
-          datasets: [{
-            label: '% Progress Toward Target',
-            data: pctData.length > 0 ? pctData : [0],
-            borderColor: lineColor || '#2962ff',
-            backgroundColor: 'rgba(41, 98, 255, 0.12)',
-            fill: true,
-            tension: 0.35,
-            pointBackgroundColor: lineColor || '#2962ff',
-            pointRadius: 5,
-            pointHoverRadius: 7
-          }]
-        },
-        options: {
-          responsive: true,
-          maintainAspectRatio: false,
-          plugins: {
-            legend: { display: false },
-            tooltip: {
-              callbacks: {
-                title: function(items) { return fullTitles[items[0].dataIndex] || items[0].label; },
-                label: function(item) { return `Progress: ${item.raw.toFixed(1)}%`; }
-              }
-            }
-          },
-          scales: {
-            x: { grid: { color: 'rgba(54, 58, 69, 0.4)' }, ticks: { color: '#787b86', font: { size: 9 } } },
-            y: { min: 0, max: 100, grid: { color: 'rgba(54, 58, 69, 0.4)' }, ticks: { color: '#d1d4dc', callback: function(value) { return value + '%'; } } }
-          }
-        }
-      });
-    }
-
-    // Time Logs Fetcher & Parser
-    window.handleTimeLogsData = function(data) {
-      try {
-        const rows = data.table.rows;
-        const weekLabels = [];
-        const weeklyHours = [];
-
-        rows.forEach(r => {
-          if (!r.c) return;
-          const weekTag = r.c[4] && r.c[4].v !== null ? r.c[4].v.toString().trim() : '';
-          const hrsVal  = r.c[5] && r.c[5].v !== null ? parseFloat(r.c[5].v) : 0;
-
-          if (weekTag && !weekLabels.includes(weekTag)) {
-            weekLabels.push(weekTag);
-            weeklyHours.push(isNaN(hrsVal) ? 0 : parseFloat(hrsVal.toFixed(2)));
-          }
-        });
-
-        lastParsedWeekLabels = weekLabels;
-        lastParsedWeeklyHours = weeklyHours;
-
-        if (weeklyHours.length > 0) {
-          const currentWeekHours = weeklyHours[weeklyHours.length - 1];
-          const timeSummaryEl = document.getElementById('summary-weekly-time');
-          if (timeSummaryEl) timeSummaryEl.innerText = `${currentWeekHours} hrs`;
-        }
-
-        renderTimeSpentChart(weekLabels, weeklyHours);
-        renderEffortVsVelocityChart(weekLabels, weeklyHours);
-      } catch (e) {
-        console.error("Error parsing Time_Logs sheet:", e);
-      }
-    };
-
-    function renderTimeSpentChart(labels, hoursData) {
-      const ctx = document.getElementById('timeSpentChart');
-      if (!ctx) return;
-
-      if (timeSpentChartInstance) timeSpentChartInstance.destroy();
-
-      const movingAvgData = hoursData.map((val, idx, arr) => {
-        const start = Math.max(0, idx - 3);
-        const subset = arr.slice(start, idx + 1);
-        const sum = subset.reduce((a, b) => a + b, 0);
-        return parseFloat((sum / subset.length).toFixed(2));
-      });
-
-      timeSpentChartInstance = new Chart(ctx, {
-        type: 'bar',
-        data: {
-          labels: labels,
-          datasets: [
-            {
-              label: '4-Week Moving Average Trend',
-              data: movingAvgData,
-              type: 'line',
-              borderColor: '#00bcd4',
-              borderWidth: 2,
-              borderDash: [5, 5],
-              pointRadius: 3,
-              pointBackgroundColor: '#00bcd4',
-              fill: false,
-              order: 1
-            },
-            {
-              label: 'Development Hours Worked',
-              data: hoursData,
-              backgroundColor: 'rgba(41, 98, 255, 0.6)',
-              borderColor: '#2962ff',
-              borderWidth: 1.5,
-              borderRadius: 4,
-              order: 2
-            }
-          ]
-        },
-        options: {
-          responsive: true,
-          maintainAspectRatio: false,
-          plugins: {
-            legend: { labels: { color: '#d1d4dc', font: { size: 10, weight: 'bold' } } },
-            tooltip: {
-              callbacks: {
-                label: function(item) {
-                  if (item.dataset.type === 'line') return ` 📈 4-Wk Moving Avg: ${item.raw} hrs`;
-                  return ` ⏱️ Logged Hours: ${item.raw} hrs`;
-                }
-              }
-            }
-          },
-          scales: {
-            x: { grid: { color: 'rgba(54, 58, 69, 0.4)' }, ticks: { color: '#787b86', font: { size: 10 } } },
-            y: { grid: { color: 'rgba(54, 58, 69, 0.4)' }, ticks: { color: '#d1d4dc' }, beginAtZero: true, title: { display: true, text: 'Hours', color: '#2962ff' } }
-          }
-        }
-      });
-    }
-
-    function renderEffortVsVelocityChart(labels, hoursData) {
-      const ctx = document.getElementById('effortVsVelocityChart');
-      if (!ctx) return;
-
-      if (effortVelocityChartInstance) effortVelocityChartInstance.destroy();
-
-      const weeklyUnlockedGoals = labels.map(label => parsedWeeklyGoalMap[label] || 0);
-
-      const movingAvgHours = hoursData.map((val, idx, arr) => {
-        const start = Math.max(0, idx - 3);
-        const subset = arr.slice(start, idx + 1);
-        const sum = subset.reduce((a, b) => a + b, 0);
-        return parseFloat((sum / subset.length).toFixed(2));
-      });
-
-      effortVelocityChartInstance = new Chart(ctx, {
-        type: 'bar',
-        data: {
-          labels: labels,
-          datasets: [
-            { 
-              label: 'Milestones Unlocked This Week', 
-              data: weeklyUnlockedGoals, 
-              type: 'line', 
-              borderColor: '#089981', 
-              backgroundColor: '#089981', 
-              pointRadius: 5, 
-              tension: 0.2, 
-              yAxisID: 'yGoals', 
-              order: 1 
-            },
-            {
-              label: 'Effort Trend (4-Wk Moving Avg)',
-              data: movingAvgHours,
-              type: 'line',
-              borderColor: '#ab47bc',
-              borderWidth: 2,
-              borderDash: [4, 4],
-              pointRadius: 2,
-              pointBackgroundColor: '#ab47bc',
-              fill: false,
-              yAxisID: 'yHours',
-              order: 2
-            },
-            { 
-              label: 'Development Hours', 
-              data: hoursData, 
-              backgroundColor: 'rgba(171, 71, 188, 0.35)', 
-              borderColor: '#ab47bc', 
-              borderWidth: 1, 
-              borderRadius: 4, 
-              yAxisID: 'yHours', 
-              order: 3 
-            }
-          ]
-        },
-        options: {
-          responsive: true,
-          maintainAspectRatio: false,
-          plugins: { 
-            legend: { labels: { color: '#d1d4dc', font: { size: 10, weight: 'bold' } } },
-            tooltip: {
-              callbacks: {
-                label: function(item) {
-                  if (item.dataset.label.includes('Effort Trend')) return ` 📈 Effort 4-Wk Avg: ${item.raw} hrs`;
-                  if (item.dataset.label.includes('Milestones')) return ` 🎯 Milestones Unlocked: ${item.raw}`;
-                  return ` ⏱️ Logged Effort: ${item.raw} hrs`;
-                }
-              }
-            }
-          },
-          scales: {
-            x: { grid: { color: 'rgba(54, 58, 69, 0.4)' }, ticks: { color: '#787b86', font: { size: 10 } } },
-            yHours: { type: 'linear', position: 'left', title: { display: true, text: 'Hours Worked', color: '#ab47bc' }, grid: { color: 'rgba(54, 58, 69, 0.4)' }, ticks: { color: '#d1d4dc' }, beginAtZero: true },
-            yGoals: { type: 'linear', position: 'right', title: { display: true, text: 'Goals Unlocked', color: '#089981' }, grid: { drawOnChartArea: false }, ticks: { color: '#d1d4dc', stepSize: 1 }, beginAtZero: true }
-          }
-        }
-      });
-    }
-
-    /* GOALS TRACKER PARSER */
-    window.handleGoalsData = function(data) {
-      try {
-        const rows = data.table.rows;
-        const seenMilestones = getSeenCompletedMilestones();
-        
-        parsedWeeklyGoalMap = {};
-
-        const categoryItems = { 'topstep-live': [], 'tradovate-live': [], 'topstep-prop': [], 'tdfy': [], 'fe': [], 'fn': [], 'ts-wd': [], 'tr-wd': [] };
-
-        let tsActiveHTML = '', trActiveHTML = '';
-        let tsTrophyHTML = '', trTrophyHTML = '';
-        let tsPropActiveHTML = '', tdfyActiveHTML = '', feActiveHTML = '', fnActiveHTML = '';
-        let tsPropTrophyHTML = '', tdfyTrophyHTML = '', feTrophyHTML = '', fnTrophyHTML = '';
-        let tsWdActiveHTML = '', trWdActiveHTML = '';
-        let tsWdTrophyHTML = '', trWdTrophyHTML = '';
-        
-        let tsTotal = 0, tsDone = 0, trTotal = 0, trDone = 0, tsPropTotal = 0, tsPropDone = 0;
-        let tdfyTotal = 0, tdfyDone = 0, feTotal = 0, feDone = 0, fnTotal = 0, fnDone = 0;
-        let tsWdTotal = 0, tsWdDone = 0, trWdTotal = 0, trWdDone = 0;
-        let totalMasterGoals = 0, totalMasterDone = 0;
-
-        rows.forEach((r, idx) => {
-          if (!r.c) return;
-
-          const colA_Name = r.c[0] && r.c[0].v !== null ? r.c[0].v.toString().trim() : '';
-          const colB_Goal = r.c[1] && r.c[1].v !== null ? r.c[1].v.toString().trim() : '';
-          const colC_Done = r.c[2] && r.c[2].v !== null ? r.c[2].v.toString().toLowerCase().trim() : '';
-          const colD_Pct  = r.c[3] && r.c[3].v !== null ? r.c[3].v.toString().trim() : '';
-          const colE_Date = r.c[4] && r.c[4].v !== null ? r.c[4].v.toString().trim() : '';
-
-          const colG_Name = r.c[6] && r.c[6].v !== null ? r.c[6].v.toString().trim() : '';
-          const colH_Goal = r.c[7] && r.c[7].v !== null ? r.c[7].v.toString().trim() : '';
-          const colI_Done = r.c[8] && r.c[8].v !== null ? r.c[8].v.toString().toLowerCase().trim() : '';
-          const colJ_Pct  = r.c[9] && r.c[9].v !== null ? r.c[9].v.toString().trim() : '';
-          const colK_Date = r.c[10] && r.c[10].v !== null ? r.c[10].v.toString().trim() : '';
-
-          const goalEntries = [];
-          if (colA_Name || colB_Goal) goalEntries.push({ acctName: colA_Name, goalTitle: colB_Goal, isComplete: colC_Done, pctVal: colD_Pct, dateVal: colE_Date, source: 'primary' });
-          if (colG_Name || colH_Goal) goalEntries.push({ acctName: colG_Name, goalTitle: colH_Goal, isComplete: colI_Done, pctVal: colJ_Pct, dateVal: colK_Date, source: 'prop' });
-
-          goalEntries.forEach(entry => {
-            const { acctName, goalTitle, isComplete, pctVal, dateVal, source } = entry;
-            const cleanName = acctName.toLowerCase().replace(/[^a-z0-9]/g, '');
-            const combinedText = (cleanName + ' ' + goalTitle.toLowerCase()).replace(/[^a-z0-9]/g, '');
-            const completed = (isComplete === 'true' || isComplete === 'yes' || isComplete === '1' || isComplete === 'x');
-            const mKey = `goal_${cleanName}_${goalTitle}_${idx}_${source}`;
-
-            let category = 'topstep-live';
-            const isWithdrawalRow = idx >= 25 || cleanName.includes('withdraw') || cleanName.includes('payout') || cleanName.includes('category2') || cleanName.includes('substack');
-
-            if (isWithdrawalRow) {
-              category = (combinedText.includes('tradovate') || combinedText.includes('tr')) ? 'tr-withdrawal' : 'ts-withdrawal';
-            } else if (cleanName.includes('50k') || cleanName.includes('eval') || cleanName.includes('topstep50k') || (source === 'prop' && cleanName.includes('topstep'))) {
-              category = 'topstep-prop';
-            } else if (cleanName.includes('tradovate')) {
-              category = 'tradovate-live';
-            } else if (cleanName.includes('tdfy') || cleanName.includes('tradeify')) {
-              category = 'tdfy';
-            } else if (cleanName.includes('fe') || cleanName.includes('futureselite')) {
-              category = 'fe';
-            } else if (cleanName.includes('fn') || cleanName.includes('fundednext')) {
-              category = 'fn';
-            } else if (cleanName.includes('topstep')) {
-              category = 'topstep-live';
-            }
-
-            const displayGoalTitle = goalTitle || (acctName + ' Milestone');
-            const tagInfo = getGoalTag(displayGoalTitle);
-            const tagHTML = `<span class="goal-tag ${tagInfo.class}">${tagInfo.text}</span>`;
-            const isWdCat = (category === 'ts-withdrawal' || category === 'tr-withdrawal');
-            const formattedTarget = formatTargetValue(pctVal, dateVal, isWdCat);
-
-            let pctProgress = completed ? 100 : 0;
-            if (!completed && pctVal) {
-              let parsedVal = parseFloat(pctVal.toString().replace(/[%]/g, '').trim());
-              if (!isNaN(parsedVal)) pctProgress = (parsedVal > -1 && parsedVal < 1 && parsedVal !== 0) ? parsedVal * 100 : parsedVal;
-            }
-
-            let chartKey = category;
-            if (category === 'ts-withdrawal') chartKey = 'ts-wd';
-            if (category === 'tr-withdrawal') chartKey = 'tr-wd';
-            if (categoryItems[chartKey]) categoryItems[chartKey].push({ title: displayGoalTitle, pct: pctProgress });
-
-            let acctPillHTML = acctName ? `<span class="goal-tag tag-acct">${acctName}</span>` : '';
-
-            totalMasterGoals++;
-            if (completed) {
-              totalMasterDone++;
-              
-              const weekTag = getWeekTagFromDate(dateVal);
-              if (weekTag) {
-                parsedWeeklyGoalMap[weekTag] = (parsedWeeklyGoalMap[weekTag] || 0) + 1;
-              }
-
-              if (!seenMilestones.includes(mKey)) {
-                saveSeenCompletedMilestone(mKey);
-                triggerCelebrationModal(displayGoalTitle);
-              }
-            }
-
-            let badgeColorClass = 'badge-blue';
-            if (category === 'tradovate-live' || category === 'tr-withdrawal') badgeColorClass = 'badge-cyan';
-            if (category === 'topstep-prop') badgeColorClass = 'badge-purple';
-            if (category === 'tdfy') badgeColorClass = 'badge-yellow';
-            if (category === 'fe') badgeColorClass = 'badge-red';
-            if (category === 'ts-withdrawal') badgeColorClass = 'badge-green';
-
-            const activeNodeHTML = `
-              <div class="timeline-node active">
-                <div class="milestone-card">
-                  <div class="milestone-info">
-                    <div class="milestone-title">${acctPillHTML} ${displayGoalTitle} ${tagHTML}</div>
-                    <div class="milestone-meta">🎯 ${formattedTarget}</div>
-                  </div>
-                  <span class="badge ${badgeColorClass}">IN PROGRESS</span>
-                </div>
-              </div>`;
-
-            const trophyNodeHTML = `
-              <div class="trophy-item">
-                <span>🏆 ${acctPillHTML ? acctPillHTML + ' ' : ''}${displayGoalTitle}</span>
-                <span class="trophy-time">⏱️ ${dateVal || 'Completed'}</span>
-              </div>`;
-
-            if (category === 'topstep-live') { tsTotal++; if (completed) { tsDone++; tsTrophyHTML += trophyNodeHTML; } else { tsActiveHTML += activeNodeHTML; } }
-            else if (category === 'tradovate-live') { trTotal++; if (completed) { trDone++; trTrophyHTML += trophyNodeHTML; } else { trActiveHTML += activeNodeHTML; } }
-            else if (category === 'topstep-prop') { tsPropTotal++; if (completed) { tsPropDone++; tsPropTrophyHTML += trophyNodeHTML; } else { tsPropActiveHTML += activeNodeHTML; } }
-            else if (category === 'tdfy') { tdfyTotal++; if (completed) { tdfyDone++; tdfyTrophyHTML += trophyNodeHTML; } else { tdfyActiveHTML += activeNodeHTML; } }
-            else if (category === 'fe') { feTotal++; if (completed) { feDone++; feTrophyHTML += trophyNodeHTML; } else { feActiveHTML += activeNodeHTML; } }
-            else if (category === 'fn') { fnTotal++; if (completed) { fnDone++; fnTrophyHTML += trophyNodeHTML; } else { fnActiveHTML += activeNodeHTML; } }
-            else if (category === 'ts-withdrawal') { tsWdTotal++; if (completed) { tsWdDone++; tsWdTrophyHTML += trophyNodeHTML; } else { tsWdActiveHTML += activeNodeHTML; } }
-            else if (category === 'tr-withdrawal') { trWdTotal++; if (completed) { trWdDone++; trWdTrophyHTML += trophyNodeHTML; } else { trWdActiveHTML += activeNodeHTML; } }
-          });
-        });
-
-        document.getElementById('topstep-goals-timeline').innerHTML = tsActiveHTML || '<div style="color: var(--text-muted); font-size: 12px;">No active Topstep Live milestones remaining.</div>';
-        document.getElementById('tradovate-goals-timeline').innerHTML = trActiveHTML || '<div style="color: var(--text-muted); font-size: 12px;">No active Tradovate Live milestones remaining.</div>';
-        document.getElementById('topstep-prop-goals-timeline').innerHTML = tsPropActiveHTML || '<div style="color: var(--text-muted); font-size: 12px;">No active Topstep Prop milestones remaining.</div>';
-        document.getElementById('tdfy-goals-timeline').innerHTML = tdfyActiveHTML || '<div style="color: var(--text-muted); font-size: 12px;">No active Tradeify milestones remaining.</div>';
-        document.getElementById('fe-goals-timeline').innerHTML = feActiveHTML || '<div style="color: var(--text-muted); font-size: 12px;">No active Futures Elite milestones remaining.</div>';
-        document.getElementById('fn-goals-timeline').innerHTML = fnActiveHTML || '<div style="color: var(--text-muted); font-size: 12px;">No active FundedNext milestones remaining.</div>';
-        document.getElementById('ts-wd-goals-timeline').innerHTML = tsWdActiveHTML || '<div style="color: var(--text-muted); font-size: 12px;">No active Topstep Withdrawal milestones remaining.</div>';
-        document.getElementById('tr-wd-goals-timeline').innerHTML = trWdActiveHTML || '<div style="color: var(--text-muted); font-size: 12px;">No active Tradovate Withdrawal milestones remaining.</div>';
-
-        document.getElementById('topstep-trophy-room').innerHTML = tsTrophyHTML ? `<div class="trophy-cabinet-title">Topstep Live Trophy Cabinet</div>${tsTrophyHTML}` : '';
-        document.getElementById('tradovate-trophy-room').innerHTML = trTrophyHTML ? `<div class="trophy-cabinet-title">Tradovate Live Trophy Cabinet</div>${trTrophyHTML}` : '';
-        document.getElementById('topstep-prop-trophy-room').innerHTML = tsPropTrophyHTML ? `<div class="trophy-cabinet-title">Topstep Prop Trophy Cabinet</div>${tsPropTrophyHTML}` : '';
-        document.getElementById('tdfy-trophy-room').innerHTML = tdfyTrophyHTML ? `<div class="trophy-cabinet-title">Tradeify Trophy Cabinet</div>${tdfyTrophyHTML}` : '';
-        document.getElementById('fe-trophy-room').innerHTML = feTrophyHTML ? `<div class="trophy-cabinet-title">Futures Elite Trophy Cabinet</div>${feTrophyHTML}` : '';
-        document.getElementById('fn-trophy-room').innerHTML = fnTrophyHTML ? `<div class="trophy-cabinet-title">FundedNext Trophy Cabinet</div>${fnTrophyHTML}` : '';
-        document.getElementById('ts-wd-trophy-room').innerHTML = tsWdTrophyHTML ? `<div class="trophy-cabinet-title">Topstep Withdrawals Trophy Cabinet</div>${tsWdTrophyHTML}` : '';
-        document.getElementById('tr-wd-trophy-room').innerHTML = trWdTrophyHTML ? `<div class="trophy-cabinet-title">Tradovate Withdrawals Trophy Cabinet</div>${trWdTrophyHTML}` : '';
-
-        document.getElementById('topstep-completed-badge').innerText = `${tsDone} / ${tsTotal} Unlocked`;
-        document.getElementById('tradovate-completed-badge').innerText = `${trDone} / ${trTotal} Unlocked`;
-        document.getElementById('topstep-prop-completed-badge').innerText = `${tsPropDone} / ${tsPropTotal} Unlocked`;
-        document.getElementById('tdfy-completed-badge').innerText = `${tdfyDone} / ${tdfyTotal} Unlocked`;
-        document.getElementById('fe-completed-badge').innerText = `${feDone} / ${feTotal} Unlocked`;
-        document.getElementById('fn-completed-badge').innerText = `${fnDone} / ${fnTotal} Unlocked`;
-        document.getElementById('ts-wd-completed-badge').innerText = `${tsWdDone} / ${tsWdTotal} Unlocked`;
-        document.getElementById('tr-wd-completed-badge').innerText = `${trWdDone} / ${trWdTotal} Unlocked`;
-
-        renderChart({ tsDone, tsTotal, trDone, trTotal, tsPropDone, tsPropTotal, tdfyDone, tdfyTotal, feDone, feTotal, fnDone, fnTotal, tsWdDone, tsWdTotal, trWdDone, trWdTotal });
-        
-        renderCategoryEmbedChart('chart-topstep-live', categoryItems['topstep-live'], '#ab47bc');
-        renderCategoryEmbedChart('chart-tradovate-live', categoryItems['tradovate-live'], '#00bcd4');
-        renderCategoryEmbedChart('chart-topstep-prop', categoryItems['topstep-prop'], '#ab47bc');
-        renderCategoryEmbedChart('chart-tdfy', categoryItems['tdfy'], '#f5c000');
-        renderCategoryEmbedChart('chart-fe', categoryItems['fe'], '#f23645');
-        renderCategoryEmbedChart('chart-fn', categoryItems['fn'], '#2962ff');
-        renderCategoryEmbedChart('chart-ts-wd', categoryItems['ts-wd'], '#089981');
-        renderCategoryEmbedChart('chart-tr-wd', categoryItems['tr-wd'], '#089981');
-
-        if (totalMasterGoals > 0) {
-          const macroPct = (totalMasterDone / totalMasterGoals) * 100;
-          document.getElementById('macro-pct-val').innerText = macroPct.toFixed(1) + '%';
-          document.getElementById('macro-pct-bar').style.width = macroPct + '%';
-        }
-
-        if (lastParsedWeekLabels.length > 0) {
-          renderEffortVsVelocityChart(lastParsedWeekLabels, lastParsedWeeklyHours);
-        }
-
-      } catch (e) {
-        console.error("Error parsing Goal Tracker sheet:", e);
-      }
-    };
 
     window.handleSheetData = function(data) {
       try {
         const rows = data.table.rows;
         rows.forEach((r, index) => {
           if (!r.c) return;
-
           const acctName = r.c[0] && r.c[0].v !== null ? r.c[0].v.toString() : '';
           const progPct  = r.c[3] && r.c[3].v !== null ? r.c[3].v.toString() : '';
           const balance  = r.c[4] && r.c[4].v !== null ? r.c[4].v.toString() : '';
           const goalVal  = r.c[5] && r.c[5].v !== null ? r.c[5].v.toString() : '';
           const drawVal  = r.c[9] && r.c[9].v !== null ? r.c[9].v.toString() : ''; 
-
           updateCardData(acctName, progPct, balance, goalVal, drawVal);
-
-          if (index === 16) { 
-            const evalName = acctName || 'Topstep 50k Eval';
-            updateCardData(evalName, progPct, balance, goalVal, drawVal);
-          }
         });
-
-        evaluateTradeifyAndGroupRules();
-        loadAllExecStatuses();
-
-        document.getElementById('sync-time').innerText = 'Last Synced with 2026 Tracker: ' + new Date().toLocaleTimeString();
+        document.getElementById('sync-time').innerText = 'Last Synced: ' + new Date().toLocaleTimeString();
         document.getElementById('live-indicator').innerText = 'LIVE FEEDS SYNCED';
-
-        countdownVal = 30;
-      } catch (e) {
-        console.error(e);
-      }
+      } catch (e) { console.error(e); }
     };
-
-    function manualSync() {
-      document.getElementById('live-indicator').innerText = 'REFRESHING...';
-      loadData();
-    }
-
-    function startTimer() {
-      if (countdownInterval) clearInterval(countdownInterval);
-      countdownInterval = setInterval(() => {
-        countdownVal--;
-        if (countdownVal <= 0) {
-          countdownVal = 30;
-          loadData();
-        }
-        document.getElementById('refresh-timer').innerText = `Auto-Refresh: ${countdownVal}s`;
-      }, 1000);
-    }
 
     function loadData() {
       updateLiveHeaderTime();
-
       const scriptDaily = document.createElement('script');
       scriptDaily.src = `https://docs.google.com/spreadsheets/d/${REAL_DOC_ID}/gviz/tq?gid=${DAILY_GID}&tqx=responseHandler:handleSheetData&_=${Date.now()}`;
       document.body.appendChild(scriptDaily);
-
-      const scriptGoals = document.createElement('script');
-      scriptGoals.src = `https://docs.google.com/spreadsheets/d/${REAL_DOC_ID}/gviz/tq?gid=${GOALS_GID}&tqx=responseHandler:handleGoalsData&_=${Date.now()}`;
-      document.body.appendChild(scriptGoals);
-
-      const scriptTime = document.createElement('script');
-      scriptTime.src = `https://docs.google.com/spreadsheets/d/${REAL_DOC_ID}/gviz/tq?gid=${TIME_LOGS_GID}&tqx=responseHandler:handleTimeLogsData&_=${Date.now()}`;
-      document.body.appendChild(scriptTime);
     }
 
     buildCards();
     loadData();
-    startTimer();
   </script>
 </body>
 </html>
