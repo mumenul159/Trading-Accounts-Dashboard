@@ -44,28 +44,14 @@
     .summary-title { font-size: 11px; text-transform: uppercase; color: var(--text-muted); font-weight: 600; letter-spacing: 0.5px; }
     .summary-value { font-size: 22px; font-weight: 700; color: #fff; margin-top: 4px; }
 
-    .action-command-banner { background: rgba(41, 98, 255, 0.1); border: 1px solid var(--accent-blue); border-radius: var(--card-radius); padding: 14px 18px; margin-bottom: 20px; display: flex; align-items: center; justify-content: space-between; gap: 12px; }
-    .action-info { display: flex; align-items: center; gap: 12px; }
-    .action-icon { font-size: 20px; }
-    .action-text-title { font-size: 11px; text-transform: uppercase; color: var(--accent-blue); font-weight: 700; letter-spacing: 0.5px; }
-    .action-text-body { font-size: 13px; font-weight: 600; color: #fff; margin-top: 2px; }
-
     .view-nav { display: flex; gap: 10px; margin-bottom: 20px; border-bottom: 1px solid var(--border-color); padding-bottom: 10px; }
     .nav-tab { background: transparent; border: none; color: var(--text-muted); font-size: 14px; font-weight: 700; padding: 8px 16px; cursor: pointer; border-radius: 6px; transition: all 0.2s ease; }
     .nav-tab.active { background: var(--bg-card); color: #fff; border: 1px solid var(--border-color); }
-
-    .filter-bar { display: flex; gap: 8px; margin-bottom: 20px; flex-wrap: wrap; align-items: center; justify-content: space-between; }
-    .filter-group { display: flex; gap: 8px; flex-wrap: wrap; }
-    .filter-btn { background: var(--bg-card); border: 1px solid var(--border-color); color: var(--text-main); padding: 8px 14px; border-radius: 20px; font-size: 12px; font-weight: 600; cursor: pointer; transition: all 0.2s ease; }
-    .filter-btn:hover { border-color: var(--accent-blue); }
-    .filter-btn.active { background: var(--accent-blue); color: #fff; border-color: var(--accent-blue); }
 
     .section-header-wrap { display: flex; justify-content: space-between; align-items: center; margin: 25px 0 15px 0; }
     .section-header { font-size: 15px; font-weight: 700; color: #fff; border-left: 3px solid var(--accent-blue); padding-left: 10px; }
     .section-header.purple { border-left-color: var(--accent-purple); }
     .section-header.yellow { border-left-color: var(--accent-yellow); }
-    .section-header.red { border-left-color: var(--accent-red); }
-    .section-header.blue { border-left-color: var(--accent-blue); }
 
     .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 15px; margin-bottom: 25px; }
     .card { background: var(--bg-card); border: 1px solid var(--border-color); border-radius: var(--card-radius); padding: 16px; position: relative; }
@@ -84,7 +70,6 @@
     .goal-hero-box { background: rgba(41, 98, 255, 0.08); border: 1px solid rgba(41, 98, 255, 0.25); border-radius: 6px; padding: 12px; margin-bottom: 10px; text-align: center; }
     .hero-label { font-size: 10px; color: var(--text-muted); font-weight: 700; text-transform: uppercase; }
     .hero-val { font-size: 18px; color: #fff; font-weight: 800; margin-top: 2px; }
-    .distance-sub { font-size: 10px; color: var(--accent-blue); font-weight: 600; margin-top: 4px; }
 
     .progress-container { margin-top: 10px; }
     .progress-bar-bg { background: var(--border-color); height: 6px; border-radius: 3px; overflow: hidden; margin-top: 4px; }
@@ -95,7 +80,16 @@
 
     .chart-box-container { background: var(--bg-card); border: 1px solid var(--border-color); border-radius: var(--card-radius); padding: 16px; margin-bottom: 25px; }
     .chart-box-title { font-size: 12px; font-weight: 700; color: var(--text-main); text-transform: uppercase; margin-bottom: 12px; }
-    .category-chart-wrap { background: rgba(30, 34, 45, 0.6); border: 1px solid var(--border-color); border-radius: var(--card-radius); padding: 12px; margin-bottom: 15px; }
+
+    /* STRATEGY CHEVRON ROADMAP STYLES */
+    .strategy-card { background: var(--bg-card); border: 1px solid var(--border-color); border-radius: var(--card-radius); padding: 20px; margin-bottom: 20px; }
+    .strategy-title { font-size: 15px; font-weight: 700; color: #fff; margin-bottom: 12px; }
+    .chevron-container { display: flex; gap: 8px; flex-wrap: wrap; }
+    .chevron-step { flex: 1; min-width: 160px; background: var(--bg-header); padding: 14px; border-radius: 6px; border: 1px solid var(--border-color); }
+    .chevron-step.is-current-focus { border-color: var(--accent-yellow); background: rgba(245, 192, 0, 0.1); }
+    .chevron-num { font-size: 10px; font-weight: 800; color: var(--accent-yellow); }
+    .chevron-text { font-size: 12px; font-weight: 600; color: #fff; margin-top: 4px; }
+    .btn-set-focus { margin-top: 8px; background: rgba(19, 23, 34, 0.6); border: 1px solid var(--border-color); color: #fff; font-size: 10px; padding: 4px 8px; border-radius: 4px; cursor: pointer; }
   </style>
 </head>
 <body>
@@ -123,13 +117,14 @@
   <div class="view-nav">
     <button class="nav-tab active" onclick="switchMainView('daily', this)">⚡ Daily Command Center</button>
     <button class="nav-tab" onclick="switchMainView('goal-tracker', this)">📊 Goal Tracker & Multi-Line Progress</button>
+    <button class="nav-tab" onclick="switchMainView('roadmap', this)">🎯 Long-Term Roadmap</button>
   </div>
 
-  <!-- VIEW 1: DAILY -->
+  <!-- VIEW 1: DAILY COMMAND CENTER -->
   <div id="view-daily">
     <div class="summary-grid">
       <div class="summary-card">
-        <div class="summary-title">Total Accounts</div>
+        <div class="summary-title">Total Portfolio</div>
         <div class="summary-value">16 / 16</div>
       </div>
       <div class="summary-card">
@@ -158,7 +153,6 @@
           <div class="goal-hero-box">
             <div class="hero-label">Target Goal</div>
             <div class="hero-val" id="val-topstep-live-goal">$0.00</div>
-            <div class="distance-sub" id="dist-topstep-live">Distance: $0.00</div>
           </div>
           <div class="progress-container">
             <div style="display: flex; justify-content: space-between; font-size: 11px;">
@@ -190,6 +184,41 @@
     <div class="chart-box-container">
       <div class="chart-box-title">📈 Tradeify — Individual Milestone Progression</div>
       <div style="height: 200px;"><canvas id="chart-tdfy"></canvas></div>
+    </div>
+  </div>
+
+  <!-- VIEW 3: LONG-TERM ROADMAP -->
+  <div id="view-roadmap" style="display: none;">
+    <div class="strategy-card">
+      <div class="strategy-title">🚀 1. Topstep Live Strategic Flow</div>
+      <div class="chevron-container">
+        <div class="chevron-step is-current-focus">
+          <div class="chevron-num">PHASE 1</div>
+          <div class="chevron-text">Grow balance to $3,000 to prove profitability</div>
+        </div>
+        <div class="chevron-step">
+          <div class="chevron-num">PHASE 2</div>
+          <div class="chevron-text">Grow account balance to $5,000 & fund Tradovate</div>
+        </div>
+        <div class="chevron-step">
+          <div class="chevron-num">PHASE 3</div>
+          <div class="chevron-text">Reach $10,000 & establish primary income engine</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="strategy-card">
+      <div class="strategy-title">⚡ 2. Tradeify Cluster Strategic Flow</div>
+      <div class="chevron-container">
+        <div class="chevron-step is-current-focus">
+          <div class="chevron-num">PHASE 1</div>
+          <div class="chevron-text">Copy-trade TDFY 1–5 as a unified cluster</div>
+        </div>
+        <div class="chevron-step">
+          <div class="chevron-num">PHASE 2</div>
+          <div class="chevron-text">Build $52,100 safety buffer across all accounts</div>
+        </div>
+      </div>
     </div>
   </div>
 
@@ -230,6 +259,7 @@
     }
 
     function formatCurrency(val) {
+      if (!val) return '$0.00';
       let num = parseFloat(val.toString().replace(/[\$,]/g, '').trim());
       return isNaN(num) ? '$0.00' : '$' + num.toLocaleString('en-US', {minimumFractionDigits: 2});
     }
@@ -259,7 +289,7 @@
 
         if (balEl) balEl.innerText = formatCurrency(balance);
         if (goalEl) goalEl.innerText = formatCurrency(goalVal);
-        if (pctEl) pctEl.innerText = progPct + '%';
+        if (pctEl) pctEl.innerText = (progPct || '0') + '%';
         if (barEl) barEl.style.width = Math.min(Math.max(parseFloat(progPct) || 0, 0), 100) + '%';
       }
     }
@@ -307,16 +337,19 @@
       btn.classList.add('active');
       document.getElementById('view-daily').style.display = viewName === 'daily' ? 'block' : 'none';
       document.getElementById('view-goal-tracker').style.display = viewName === 'goal-tracker' ? 'block' : 'none';
+      document.getElementById('view-roadmap').style.display = viewName === 'roadmap' ? 'block' : 'none';
     }
 
     window.handleGoalsData = function(data) {
       try {
+        if (!data || !data.table || !data.table.rows) return;
         const rows = data.table.rows;
         const tsItems = [];
         const tdfyItems = [];
 
         rows.forEach(r => {
           if (!r.c) return;
+          // Standardized 5-Column Schema Parsing (Col B: Goal Description, Col D: Progress %)
           const title = r.c[1] && r.c[1].v ? r.c[1].v.toString() : '';
           const pct = r.c[3] && r.c[3].v ? parseFloat(r.c[3].v) : 0;
           if (title) {
@@ -332,13 +365,15 @@
 
     window.handleSheetData = function(data) {
       try {
+        if (!data || !data.table || !data.table.rows) return;
         const rows = data.table.rows;
         rows.forEach(r => {
           if (!r.c) return;
+          // Standardized 5-Column Schema Parsing (Col A: Account, Col B: Goal, Col D: Progress %, Col E: Balance/Date)
           const acctName = r.c[0] && r.c[0].v !== null ? r.c[0].v.toString() : '';
+          const goalVal  = r.c[1] && r.c[1].v !== null ? r.c[1].v.toString() : '';
           const progPct  = r.c[3] && r.c[3].v !== null ? r.c[3].v.toString() : '';
           const balance  = r.c[4] && r.c[4].v !== null ? r.c[4].v.toString() : '';
-          const goalVal  = r.c[5] && r.c[5].v !== null ? r.c[5].v.toString() : '';
           updateCardData(acctName, progPct, balance, goalVal);
         });
 
