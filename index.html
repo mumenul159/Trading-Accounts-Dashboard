@@ -3,8 +3,8 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>2026 Trade Command Center & Roadmap v2.4.0</title>
-  <!-- Chart.js CDN via cdnjs (Bypasses Edge Tracking Prevention & Script Blocks) -->
+  <title>2026 Trade Command Center & Roadmap v2.4.1</title>
+  <!-- Chart.js CDN via cdnjs -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.0/chart.umd.min.js"></script>
   <style>
     :root {
@@ -119,6 +119,9 @@
     .badge-blue { background: rgba(41, 98, 255, 0.2); color: var(--accent-blue); border: 1px solid var(--accent-blue); }
     .badge-purple { background: rgba(171, 71, 188, 0.2); color: var(--accent-purple); border: 1px solid var(--accent-purple); }
     .badge-cyan { background: rgba(0, 188, 212, 0.2); color: var(--accent-cyan); border: 1px solid var(--accent-cyan); }
+
+    /* Current Goal Text Box */
+    .current-goal-text { font-size: 11px; color: var(--accent-cyan); font-weight: 700; text-align: center; margin-bottom: 10px; text-transform: uppercase; letter-spacing: 0.5px; background: rgba(0, 188, 212, 0.08); padding: 8px; border-radius: 6px; border: 1px dashed rgba(0, 188, 212, 0.3); min-height: 30px; display: flex; align-items: center; justify-content: center; }
 
     /* Goal Hero Box & Recovery Mode */
     .goal-hero-box { background: rgba(41, 98, 255, 0.08); border: 1px solid rgba(41, 98, 255, 0.25); border-radius: 6px; padding: 12px; margin-bottom: 10px; text-align: center; transition: all 0.3s ease; }
@@ -309,7 +312,7 @@
       <p style="color: var(--text-muted); font-size: 12px; margin-top: 4px;">Live Auto-Synced Dual-Feed Command Center</p>
     </div>
     <div class="header-badges">
-      <span class="version-badge">v2.4.0</span>
+      <span class="version-badge">v2.4.1</span>
       <span class="build-timestamp" id="dashboard-load-time">Updating timestamp...</span>
       <span class="status-badge" id="live-indicator">SYNCING...</span>
     </div>
@@ -348,7 +351,7 @@
     <div class="summary-grid">
       <div class="summary-card">
         <div class="summary-title">Total Portfolio</div>
-        <div class="summary-value" id="summary-active-count">16 / 16</div>
+        <div class="summary-value" id="summary-active-count">15 / 15</div>
       </div>
       <div class="summary-card">
         <div class="summary-title">Today's Focus</div>
@@ -367,12 +370,11 @@
     <!-- DAILY FILTER TABS -->
     <div class="filter-bar">
       <div class="filter-group">
-        <button class="filter-btn active" onclick="filterDailyCategory('all', this)">All Accounts (16)</button>
+        <button class="filter-btn active" onclick="filterDailyCategory('all', this)">All Accounts</button>
         <button class="filter-btn" onclick="filterDailyCategory('topstep', this)">Topstep Live (1)</button>
         <button class="filter-btn" onclick="filterDailyCategory('tdfy', this)">Tradeify (5)</button>
         <button class="filter-btn" onclick="filterDailyCategory('fe', this)">Futures Elite (5)</button>
         <button class="filter-btn" onclick="filterDailyCategory('fn', this)">FundedNext (3)</button>
-        <button class="filter-btn" onclick="filterDailyCategory('ts-eval', this)">Topstep Evals (1)</button>
       </div>
       <button class="toggle-completed-btn" id="toggle-completed-view-btn" onclick="toggleCompletedCardsVisibility()">
         👁️ Show Completed (<span id="hidden-completed-counter">0</span>)
@@ -408,8 +410,12 @@
             <button class="exec-btn state-in-progress" onclick="setAccountExecStatus('topstep-live', 'in-progress')">In Progress</button>
             <button class="exec-btn state-complete" onclick="setAccountExecStatus('topstep-live', 'complete')">Done ✓</button>
           </div>
+          
+          <!-- CURRENT GOAL TEXT -->
+          <div class="current-goal-text" id="text-goal-topstep-live">Loading current goal...</div>
+
           <div class="goal-hero-box" id="hero-box-topstep-live">
-            <div class="hero-label" id="label-topstep-live">Target Goal</div>
+            <div class="hero-label" id="label-topstep-live">Target Dollar Goal</div>
             <div class="hero-val" id="val-topstep-live-goal">$0.00</div>
             <div class="distance-sub" id="dist-topstep-live">Distance: $0.00</div>
           </div>
@@ -452,56 +458,6 @@
       <div class="grid" id="grid-fn"></div>
     </div>
 
-    <div class="category-block" id="block-ts-eval">
-      <div class="section-header-wrap">
-        <div class="section-header purple">5. Topstep 50k Evals</div>
-      </div>
-      <div class="grid" id="grid-ts-eval">
-        <div class="card" id="card-topstep-50k-eval">
-          <div class="card-header">
-            <div class="card-title-wrap">
-              <span class="card-title" id="title-topstep-50k-eval">Topstep 50k Eval</span>
-              <span class="title-completed-tag" id="tag-completed-topstep-50k-eval">DONE ✓</span>
-            </div>
-            <span class="badge badge-purple" id="badge-topstep-50k-eval">EVALUATION</span>
-          </div>
-
-          <div class="card-risk-box">
-            <span class="card-risk-label">⚠️ Risk Allocation</span>
-            <select class="card-risk-select" id="risk-select-topstep-50k-eval" onchange="saveCardRiskAmount('topstep-50k-eval')">
-              <option value="100">$100 Risk</option>
-              <option value="150" selected>$150 Risk</option>
-              <option value="200">$200 Risk</option>
-              <option value="250">$250 Risk</option>
-              <option value="300">$300 Risk</option>
-              <option value="500">$500 Risk</option>
-            </select>
-          </div>
-
-          <div class="exec-status-bar" id="exec-bar-topstep-50k-eval">
-            <button class="exec-btn state-not-started active" onclick="setAccountExecStatus('topstep-50k-eval', 'not-started')">Not Started</button>
-            <button class="exec-btn state-in-progress" onclick="setAccountExecStatus('topstep-50k-eval', 'in-progress')">In Progress</button>
-            <button class="exec-btn state-complete" onclick="setAccountExecStatus('topstep-50k-eval', 'complete')">Done ✓</button>
-          </div>
-          <div class="goal-hero-box" id="hero-box-topstep-50k-eval">
-            <div class="hero-label" id="label-topstep-50k-eval">Target Goal</div>
-            <div class="hero-val" id="val-topstep-50k-eval-goal">$0.00</div>
-            <div class="distance-sub" id="dist-topstep-50k-eval">Distance: $0.00</div>
-          </div>
-          <div class="progress-container">
-            <div class="stat-row" style="display: flex; justify-content: space-between; font-size: 11px;">
-              <span class="stat-label" id="lbl-pct-topstep-50k-eval">Progress</span>
-              <span style="font-weight: 600;" id="val-topstep-50k-eval-pct">0.0%</span>
-            </div>
-            <div class="progress-bar-bg"><div class="progress-bar-fill" id="bar-topstep-50k-eval-pct"></div></div>
-          </div>
-          <div class="balance-subdued">
-            <span>Current Balance:</span>
-            <span class="stat-val" id="val-topstep-50k-eval-bal">$0.00</span>
-          </div>
-        </div>
-      </div>
-    </div>
   </div>
 
   <!-- MAIN VIEW 2: GOAL TRACKER & TIME LOGS -->
@@ -831,7 +787,7 @@
         fnGrid.innerHTML += createCardHTML(`fn-${i}`, `FN Acct ${i}`, 'BUFFERING');
       }
 
-      ['topstep-live', 'topstep-50k-eval'].forEach(id => loadCardRiskAmount(id));
+      ['topstep-live'].forEach(id => loadCardRiskAmount(id));
       for (let i = 1; i <= 5; i++) loadCardRiskAmount(`tdfy-${i}`);
       for (let i = 1; i <= 5; i++) loadCardRiskAmount(`fe-${i}`);
       for (let i = 1; i <= 3; i++) loadCardRiskAmount(`fn-${i}`);
@@ -865,8 +821,11 @@
             <button class="exec-btn state-in-progress" onclick="setAccountExecStatus('${id}', 'in-progress')">In Progress</button>
             <button class="exec-btn state-complete" onclick="setAccountExecStatus('${id}', 'complete')">Done ✓</button>
           </div>
+
+          <div class="current-goal-text" id="text-goal-${id}">Loading current goal...</div>
+
           <div class="goal-hero-box" id="hero-box-${id}">
-            <div class="hero-label" id="label-${id}">Target Goal</div>
+            <div class="hero-label" id="label-${id}">Target Dollar Goal</div>
             <div class="hero-val" id="val-${id}-goal">$0.00</div>
             <div class="distance-sub" id="dist-${id}">Distance: $0.00</div>
           </div>
@@ -1069,8 +1028,7 @@
         'topstep': document.getElementById('block-topstep'),
         'tdfy': document.getElementById('block-tdfy'),
         'fe': document.getElementById('block-fe'),
-        'fn': document.getElementById('block-fn'),
-        'ts-eval': document.getElementById('block-ts-eval')
+        'fn': document.getElementById('block-fn')
       };
 
       if (cat === 'all') {
@@ -1096,7 +1054,7 @@
       }
     }
 
-    function updateCardData(acctName, progPct, balance, goalVal) {
+    function updateCardData(acctName, progPct, balance, goalVal, currentGoalText) {
       if (!acctName) return;
 
       const cleanName = acctName.toLowerCase().replace(/[\r\n]+/g, '').replace(/[^a-z0-9]/g, '');
@@ -1104,8 +1062,6 @@
 
       if (cleanName === 'topsteplive' || (cleanName.includes('topstep') && cleanName.includes('live'))) {
         targetId = 'topstep-live';
-      } else if (cleanName.includes('50k') || cleanName.includes('eval') || cleanName.includes('topstep50k')) {
-        targetId = 'topstep-50k-eval';
       } else if (cleanName.includes('tdfy') || cleanName.includes('tradeify')) {
         if (cleanName.includes('1')) targetId = 'tdfy-1';
         else if (cleanName.includes('2')) targetId = 'tdfy-2';
@@ -1130,6 +1086,7 @@
         const pctEl = document.getElementById(`val-${targetId}-pct`);
         const barEl = document.getElementById(`bar-${targetId}-pct`);
         const distEl = document.getElementById(`dist-${targetId}`);
+        const textGoalEl = document.getElementById(`text-goal-${targetId}`);
 
         const numBal = parseNumericValue(balance);
         const numGoal = parseNumericValue(goalVal);
@@ -1139,6 +1096,8 @@
         if (goalEl) goalEl.innerText = formatCurrency(goalVal);
         if (pctEl) pctEl.innerText = rawPct.toFixed(1) + '%';
         if (barEl) barEl.style.width = Math.min(Math.max(rawPct, 0), 100) + '%';
+
+        if (textGoalEl) textGoalEl.innerText = currentGoalText || 'NO ACTIVE GOAL SET';
 
         if (distEl) {
           const distance = numGoal - numBal;
@@ -1153,6 +1112,7 @@
       }
     }
 
+    /* MULTI-LINE INDIVIDUAL MILESTONE GRAPH ENGINE */
     function renderCategoryEmbedChart(canvasId, items) {
       const ctx = document.getElementById(canvasId);
       if (!ctx) return;
@@ -1220,6 +1180,7 @@
       return null;
     }
 
+    /* TIME LOGS CHARTS */
     window.handleTimeLogsData = function(data) {
       try {
         if (!data || !data.table || !data.table.rows) return;
@@ -1348,6 +1309,7 @@
       });
     }
 
+    /* GOALS 5-COLUMN SCHEMA PARSER */
     window.handleGoalsData = function(data) {
       try {
         if (!data || !data.table || !data.table.rows) return;
@@ -1460,13 +1422,14 @@
         const rows = data.table.rows;
         rows.forEach((r) => {
           if (!r.c) return;
+          // Col A (0) Acct, Col D (3) Progress, Col E (4) Balance, Col F (5) Current Goal Text, Col O (14) Target Goal
           const acctName = r.c[0] && r.c[0].v !== null ? r.c[0].v.toString() : '';
           const progPct  = r.c[3] && r.c[3].v !== null ? r.c[3].v.toString() : '';
           const balance  = r.c[4] && r.c[4].v !== null ? r.c[4].v.toString() : '';
-          // Using Column O (index 14) for Target Goal
+          const currentGoalText = r.c[5] && r.c[5].v !== null ? r.c[5].v.toString() : '';
           const goalVal  = r.c[14] && r.c[14].v !== null ? r.c[14].v.toString() : '';
           
-          updateCardData(acctName, progPct, balance, goalVal);
+          updateCardData(acctName, progPct, balance, goalVal, currentGoalText);
         });
 
         document.getElementById('sync-time').innerText = 'Last Synced: ' + new Date().toLocaleTimeString();
