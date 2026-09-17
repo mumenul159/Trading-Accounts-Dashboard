@@ -4,7 +4,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>2026 Trade Command Center & Roadmap v2.4.0</title>
-  <!-- Chart.js via cdnjs (Bypasses Edge Tracking Prevention & Script Blocks) -->
+  <!-- Chart.js CDN via cdnjs (Bypasses Edge Tracking Prevention & Script Blocks) -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.0/chart.umd.min.js"></script>
   <style>
     :root {
@@ -110,6 +110,7 @@
     .card-risk-select { background: var(--bg-card); border: 1px solid var(--border-color); color: #fff; font-size: 13px; font-weight: 800; padding: 4px 10px; border-radius: 6px; outline: none; cursor: pointer; }
     .card-risk-select:focus { border-color: var(--accent-yellow); }
 
+    /* Badges */
     .badge { font-size: 10px; padding: 3px 8px; border-radius: 12px; font-weight: 700; text-transform: uppercase; background: var(--bg-header); color: var(--text-muted); }
     .badge-green { background: rgba(8, 153, 129, 0.2); color: var(--accent-green); border: 1px solid var(--accent-green); }
     .badge-yellow { background: rgba(245, 192, 0, 0.25); color: var(--accent-yellow); border: 1px solid var(--accent-yellow); }
@@ -794,8 +795,6 @@
     const GOALS_GID     = '1603097852';
     const TIME_LOGS_GID = '1062306775';
 
-    let countdownVal = 30;
-    let countdownInterval = null;
     let timeSpentChartInstance = null;
     let effortVelocityChartInstance = null;
     const categoryChartInstances = {};
@@ -814,6 +813,35 @@
       const dateStr = now.toLocaleDateString([], { month: 'short', day: 'numeric', year: 'numeric' });
       const el = document.getElementById('dashboard-load-time');
       if (el) el.innerText = `Updated: ${dateStr} • ${timeStr} EDT`;
+    }
+
+    function getWeekTagFromDate(dateVal) {
+      if (!dateVal) return null;
+      let str = dateVal.toString().trim();
+      if (str === '' || str.includes('%')) return null;
+
+      if (str.toUpperCase().startsWith('W')) return str.toUpperCase();
+
+      let parsedDate = null;
+      if (str.includes('/')) {
+        const parts = str.split('/');
+        if (parts.length >= 2) {
+          const month = parseInt(parts[0], 10) - 1;
+          const day = parseInt(parts[1], 10);
+          let year = parts[2] ? parseInt(parts[2], 10) : 2026;
+          if (year < 100) year += 2000;
+          parsedDate = new Date(year, month, day);
+        }
+      }
+
+      if (parsedDate && !isNaN(parsedDate.getTime())) {
+        parsedDate.setDate(parsedDate.getDate() + 4 - (parsedDate.getDay() || 7));
+        const yearStart = new Date(parsedDate.getFullYear(), 0, 1);
+        const weekNo = Math.ceil((((parsedDate - yearStart) / 86400000) + 1) / 7);
+        return `W${weekNo}`;
+      }
+
+      return null;
     }
 
     function saveCardRiskAmount(id) {
@@ -1339,6 +1367,8 @@
         if (!data || !data.table || !data.table.rows) return;
         const rows = data.table.rows;
         
+        parsedWeeklyGoalMap = {}; // Reset weekly count map
+
         const categoryItems = {
           'topstep-live': [],
           'tradovate-live': [],
@@ -1365,123 +1395,28 @@
 
           if (!acctName && !goalTitle) return;
 
-          const combinedText = (acctName + ' ' + goalTitle).toLowerCase();
+          const cleanAcct = acctName.toLowerCase().replace(/[^a-z0-9]/g, '');
+          const cleanGoal = goalTitle.toLowerCase().replace(/[^a-z0-9]/g, '');
+          const combined  = cleanAcct + ' ' + cleanGoal;
+          
           const completed = (isDone === 'true' || isDone === 'yes' || isDone === '1' || isDone === 'x');
           let pctProgress = completed ? 100 : parseNumericPercent(pctVal);
 
           totalMasterGoals++;
-          if (completed) totalMasterDone++;
+          if (completed) {
+            totalMasterDone++;
+            const weekTag = getWeekTagFromDate(dateVal);
+            if (weekTag) {
+              parsedWeeklyGoalMap[weekTag] = (parsedWeeklyGoalMap[weekTag] || 0) + 1;
+            }
+          }
 
           let categoryKey = 'topstep-prop';
 
-          if (combinedText.includes('withdraw') || combinedText.includes('payout')) {
-            categoryKey = combinedText.includes('tradovate') ? 'tr-wd' : 'ts-wd';
-          } else if (combinedText.includes('topstep live') || (combinedText.includes('topstep') && combinedText.includes('live'))) {
+          if (combined.includes('withdraw') || combined.includes('payout') || combined.includes('wd')) {
+            categoryKey = (combined.includes('tradovate') || combined.includes('tr')) ? 'tr-wd' : 'ts-wd';
+          } else if (cleanAcct.includes('topsteplive') || (cleanAcct.includes('topstep') && cleanAcct.includes('live'))) {
             categoryKey = 'topstep-live';
-          } else if (combinedText.includes('tradovate live') || (combinedText.includes('tradovate') && combinedText.includes('live'))) {
+          } else if (cleanAcct.includes('tradovatelive') || (cleanAcct.includes('tradovate') && cleanAcct.includes('live'))) {
             categoryKey = 'tradovate-live';
-          } else if (combinedText.includes('tdfy') || combinedText.includes('tradeify')) {
-            categoryKey = 'tdfy';
-          } else if (combinedText.includes('fe') || combinedText.includes('futures elite') || combinedText.includes('futureselite')) {
-            categoryKey = 'fe';
-          } else if (combinedText.includes('fn') || combinedText.includes('fundednext')) {
-            categoryKey = 'fn';
-          } else if (combinedText.includes('50k') || combinedText.includes('eval') || combinedText.includes('topstep prop')) {
-            categoryKey = 'topstep-prop';
-          }
-
-          categoryItems[categoryKey].push({
-            acct: acctName,
-            title: goalTitle || acctName,
-            pct: pctProgress,
-            completed: completed,
-            date: dateVal
-          });
-        });
-
-        Object.keys(categoryItems).forEach(catKey => {
-          const items = categoryItems[catKey];
-          renderCategoryEmbedChart(`chart-${catKey}`, items);
-
-          const timelineEl = document.getElementById(`${catKey.replace('-wd', '')}-goals-timeline`) || 
-                             document.getElementById(`${catKey}-goals-timeline`);
-          
-          if (timelineEl) {
-            let timelineHTML = '';
-            items.forEach(item => {
-              if (!item.completed) {
-                timelineHTML += `
-                  <div class="timeline-node active">
-                    <div class="milestone-card">
-                      <div class="milestone-info">
-                        <div class="milestone-title">
-                          <span class="goal-tag tag-acct">${item.acct || 'Goal'}</span> 
-                          ${item.title}
-                        </div>
-                        <div class="milestone-meta">🎯 Progress: ${item.pct.toFixed(1)}%</div>
-                      </div>
-                      <span class="badge badge-blue">IN PROGRESS</span>
-                    </div>
-                  </div>`;
-              }
-            });
-            timelineEl.innerHTML = timelineHTML || '<div style="color: var(--text-muted); font-size: 12px;">All goals completed or no active milestones listed.</div>';
-          }
-        });
-
-        if (totalMasterGoals > 0) {
-          const macroPct = (totalMasterDone / totalMasterGoals) * 100;
-          const macroValEl = document.getElementById('macro-pct-val');
-          const macroBarEl = document.getElementById('macro-pct-bar');
-          if (macroValEl) macroValEl.innerText = macroPct.toFixed(1) + '%';
-          if (macroBarEl) macroBarEl.style.width = macroPct + '%';
-        }
-
-      } catch (e) {
-        console.error("Goals parse error:", e);
-      }
-    };
-
-    window.handleSheetData = function(data) {
-      try {
-        if (!data || !data.table || !data.table.rows) return;
-        const rows = data.table.rows;
-        rows.forEach((r) => {
-          if (!r.c) return;
-          const acctName = r.c[0] && r.c[0].v !== null ? r.c[0].v.toString() : '';
-          const goalVal  = r.c[1] && r.c[1].v !== null ? r.c[1].v.toString() : '';
-          const progPct  = r.c[3] && r.c[3].v !== null ? r.c[3].v.toString() : '';
-          const balance  = r.c[4] && r.c[4].v !== null ? r.c[4].v.toString() : '';
-          updateCardData(acctName, progPct, balance, goalVal);
-        });
-
-        document.getElementById('sync-time').innerText = 'Last Synced: ' + new Date().toLocaleTimeString();
-        document.getElementById('live-indicator').innerText = 'LIVE FEEDS SYNCED';
-      } catch (e) { console.error("Daily parse error:", e); }
-    };
-
-    function loadData() {
-      updateLiveHeaderTime();
-      const scriptDaily = document.createElement('script');
-      scriptDaily.src = `https://docs.google.com/spreadsheets/d/${REAL_DOC_ID}/gviz/tq?gid=${DAILY_GID}&tqx=responseHandler:handleSheetData&_=${Date.now()}`;
-      document.body.appendChild(scriptDaily);
-
-      const scriptGoals = document.createElement('script');
-      scriptGoals.src = `https://docs.google.com/spreadsheets/d/${REAL_DOC_ID}/gviz/tq?gid=${GOALS_GID}&tqx=responseHandler:handleGoalsData&_=${Date.now()}`;
-      document.body.appendChild(scriptGoals);
-
-      const scriptTime = document.createElement('script');
-      scriptTime.src = `https://docs.google.com/spreadsheets/d/${REAL_DOC_ID}/gviz/tq?gid=${TIME_LOGS_GID}&tqx=responseHandler:handleTimeLogsData&_=${Date.now()}`;
-      document.body.appendChild(scriptTime);
-    }
-
-    function manualSync() {
-      document.getElementById('live-indicator').innerText = 'REFRESHING...';
-      loadData();
-    }
-
-    buildCards();
-    loadData();
-  </script>
-</body>
-</html>
+          } else if (cleanAcct.includes('Could you please clarify what code you are looking for? Let me know the programming language, framework, or specific project/task you'd like the code for, and I'll generate it for you right away.
